@@ -30,7 +30,7 @@ export default function Home() {
 
           <TextGenerateEffect
             className="text-center text-[40px] md:text-5xl lg:text-6xl mb-5 goldman-regular uppercase"
-            words="Transforming Concepts into seamsless Experiences"
+            words="Transforming Concepts into seamless Experiences"
           />
 
           {/* <HeroTextSection /> */}

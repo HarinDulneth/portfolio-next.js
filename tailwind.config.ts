@@ -9,7 +9,12 @@ module.exports = {
     theme: {
       extend: {
         fontFamily: {
-          'great-vibes': ['var(--font-great-vibes)'],
+          'geist-sans': ['var(--font-geist-sans)', 'sans-serif'],
+          'geist-mono': ['var(--font-geist-mono)', 'monospace'],
+          'great-vibes': ['var(--font-great-vibes)', 'cursive'],
+          'goldman-regular': ['var(--font-goldman)', 'sans-serif'],
+          'audiowide': ['var(--font-audiowide)', 'sans-serif'],
+          'inter': ['var(--font-inter)', 'sans-serif'],
         },
         colors: {
           'magic-blue': '#6344F5',
