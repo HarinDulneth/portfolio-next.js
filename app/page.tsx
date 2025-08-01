@@ -1,103 +1,104 @@
 import Image from "next/image";
+import { BackgroundBeams } from "./components/ui/background-beams";
+import Navbar from "./components/ui/navbar";
+import { TextGenerateEffect } from "./components/ui/text-generate-effect";
+import MagicButton from "./components/ui/magic-button";
+import Skills from "./components/ui/skills";
+import TypewriterText from "./components/ui/typewriter-text";
+import FirefliesBackground from "./components/ui/fireflies-backround";
+import StarsBackground from "./components/ui/stars-background";
+import ShootingStars from "./components/ui/shooting-stars";
+import ThreeDMarquee from "./components/ui/3d-marquee";
+import { InfiniteMovingCards } from "./components/ui/infinite-moving-cards";
+import GenerateButton from "./components/ui/glass-button";
+import StarfieldBackground from "./components/ui/star-background";
+import { LiquidButton } from "./components/ui/liquid-glass-button";
+import AnimatedText from "./components/ui/animated-text";
 
 export default function Home() {
   return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+    <div>
+      <StarfieldBackground />
+      <ShootingStars />
+      <Navbar />
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+      <div className="flex justify-center relative mt-50 my-20 z-10">
+        <div className="max-w-[89vw] md:max-w-2xl lg:max-w-[60vw] flex flex-col items-center justify-center mt-20">
+          <h2 className="uppercase tracking-widest text-xs text-center text-magic-blue max-w-80">
+            Dynamic WebMagic with Next.js
+          </h2>
+
+          <TextGenerateEffect
+            className="text-center text-[40px] md:text-5xl lg:text-6xl mb-5 goldman-regular uppercase"
+            words="Transforming Concepts into seamsless Experiences"
+          />
+
+          {/* <HeroTextSection /> */}
+
+          <div className="text-center md:tracking-wider my-1 w-full h-[1.2em] md:h-[1.5em] lg:h-[9rem] flex items-center justify-center">
+            <div className="max-w-fit min-w-0">
+              {" "}
+              {/* Added min-w-0 to prevent overflow issues */}
+              <AnimatedText
+                initialText="Hi, I'm Dulneth"
+                staticPrefix="Hi, I'm "
+                gooeyTexts={["Harin", "Dulneth"]}
+                typewriterSpeed={150}
+                typewriterDelay={1000}
+                morphTime={1}
+                cooldownTime={0.25}
+                className="w-full h-full flex items-center justify-center"
+              />
+            </div>
+          </div>
+
+          {/* <button className="bg-black/8 hover:bg-black/12 text-white/80 my-10 px-6 py-2 rounded-full text-md font-medium transition-all duration-200 hover:scale-105 backdrop-blur-xl border-2 border-white/50 shadow-lg shadow-black/20">
+            Contact
+          </button> */}
+
+          <div className="flex items-center space-x-10 my-12">
+            {/* <button className="w-[250px] px-12 py-5 rounded-full bg-[#FFFFFF] font-bold text-black tracking-wider uppercase transform hover:scale-105 hover:bg-[#000000] transition-colors duration-200">
+              Show my work
+            </button>
+            <button className="w-[250px] shadow-[inset_0_0_0_2px_#616467] text-black px-12 py-5 rounded-full tracking-wider uppercase font-bold bg-transparent hover:bg-[#616467] hover:text-white dark:text-neutral-200 transition duration-200">
+              Playlist
+            </button> */}
+            <LiquidButton className="w-[250px] px-10 py-8 tracking-wider font-medium text-lg">
+              Show My Work
+            </LiquidButton>
+            <LiquidButton className="w-[250px] px-10 py-8 tracking-wider font-medium text-lg">
+              Playlist
+            </LiquidButton>
+          </div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+      </div>
+
+      {/* <div className="relative z-10 px-8 pt-32">
+        <div className="max-w-5xl">
+          <h1 className="text-5xl md:text-6xl lg:text-8xl xl:text-9xl font-black leading-none mb-4 tracking-tight">
+            <span className="block text-[#575757]">I'M HARIN</span>
+          </h1>
+
+          <h2 className="text-9xl md:text-7xl lg:text-9xl xl:text-9xl font-black text-white leading-tight mt-8 whitespace-nowrap">
+            PRODUCT DESIGNER
+          </h2>
+        </div>
+
+        <div className="absolute ">
+          <MagicButton title="Show my work" otherClasses="" />
+        </div>
+      </div> */}
+      <InfiniteMovingCards
+        items={[
+          { name: "React" },
+          { name: "Next.js" },
+          { name: "Python" },
+          { name: "TypeScript" },
+          { name: "JavaScript" },
+          { name: "Node.js" },
+        ]}
+        className="mt-50 my-20"
+      />
     </div>
   );
 }
