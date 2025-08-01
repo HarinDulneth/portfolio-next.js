@@ -4,8 +4,8 @@ const MagicButton = ({
   title,
   otherClasses,
 }: {
-  title: String;
-  otherClasses?: String;
+  title: string;
+  otherClasses?: string;
 }) => {
   return (
     <button
