@@ -3,7 +3,8 @@
 import React, { Suspense, useEffect } from "react";
 import dynamic from "next/dynamic";
 
-const Spline = dynamic(() => import("@splinetool/react-spline"), {
+// Fixed dynamic import - import the default export specifically
+const Spline = dynamic(() => import("@splinetool/react-spline").then(mod => ({ default: mod.default })), {
   ssr: false,
   loading: () => (
     <div className="flex items-center justify-center h-screen bg-gray-900">
