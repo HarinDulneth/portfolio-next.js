@@ -61,7 +61,7 @@ const Navbar: React.FC = () => {
                 <Link
                   key={item.href}
                   href={item.href}
-                  className={`hover:text-white px-5 py-2 rounded-full text-md  transition-all duration-200 hover:bg-white/15 ${
+                  className={`hover:text-white px-5 py-3 rounded-full text-md  transition-all duration-200 hover:bg-white/15 ${
                     isActive(item.href)
                       ? "bg-white text-black font-semibold backdrop-blur-sm scale-y-125 !px-8"
                       : "text-white/90"
