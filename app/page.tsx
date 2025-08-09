@@ -1,31 +1,9 @@
 import Image from "next/image";
-import { BackgroundBeams } from "./components/ui/background-beams";
 import Navbar from "./components/ui/navbar";
-import { TextGenerateEffect } from "./components/ui/text-generate-effect";
-import MagicButton from "./components/ui/magic-button";
-import Skills from "./components/ui/skills";
-import TypewriterText from "./components/ui/typewriter-text";
-import FirefliesBackground from "./components/ui/fireflies-backround";
-import StarsBackground from "./components/ui/stars-background";
-import ShootingStars from "./components/ui/shooting-stars";
-import ThreeDMarquee from "./components/ui/3d-marquee";
 import { InfiniteMovingCards } from "./components/ui/infinite-moving-cards";
-import GenerateButton from "./components/ui/glass-button";
-import { LiquidButton } from "./components/ui/liquid-glass-button";
-import AnimatedText from "./components/ui/animated-text";
-import MagicBento from "./components/ui/magic-bento";
-import { GlowingEffect } from "./components/ui/glowing-effect";
-import { SplineScene } from "./components/ui/splite-robot";
 import HeroSection from "./components/ui/herosection";
-import Particles from "./components/ui/particle-backround";
-import { Waves } from "lucide-react";
-import WavesBackround from "./components/ui/beam-backround";
-import DarkVeil from "./components/ui/dark-vail";
-import { BackgroundPaths } from "./components/ui/path-backround";
-import Smoke from "./components/ui/glow-smoke";
-import Lightning from "./components/ui/glow-smoke";
 import CombinedDarkVeilWaves from "./components/ui/combine-backround";
-import CombinedVeilWaves from "./components/ui/combine-backround";
+
 
 export default function Home() {
   return (
