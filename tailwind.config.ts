@@ -15,6 +15,8 @@ module.exports = {
           'goldman-regular': ['var(--font-goldman)', 'sans-serif'],
           'audiowide': ['var(--font-audiowide)', 'sans-serif'],
           'inter': ['var(--font-inter)', 'sans-serif'],
+          'zendots': ['var(--font-zendots)', 'sans-serif'],
+          'orbitron': ['var(--font-orbitron)', 'sans-serif'],
         },
         colors: {
           'magic-blue': '#6344F5',
@@ -22,8 +24,14 @@ module.exports = {
         },
         animation: {
           shimmer: "shimmer 2s linear infinite",
+          gradient: 'gradient 2s linear infinite'
         },
         keyframes: {
+          gradient: {
+            '0%': { backgroundPosition: '0% 50%' },
+            '50%': { backgroundPosition: '100% 50%' },
+            '100%': { backgroundPosition: '0% 50%' },
+          },
           shimmer: {
             from: {
               backgroundPosition: "0 0",

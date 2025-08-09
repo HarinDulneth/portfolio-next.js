@@ -75,7 +75,7 @@ const AnimatedSignature: React.FC = () => {
         <svg
           ref={svgRef}
           width="123"
-          height="65"
+          height="45"
           viewBox="0 0 123 65"
           style={{
             filter:

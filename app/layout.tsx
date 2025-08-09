@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { Goldman, Audiowide, Inter, Great_Vibes } from "next/font/google";
+import { Goldman, Audiowide, Inter, Great_Vibes, Zen_Dots, Orbitron } from "next/font/google";
 
 // Define fonts with proper configuration
 const goldman = Goldman({
@@ -18,6 +18,22 @@ const audiowide = Audiowide({
   display: "swap",
   preload: true,
 });
+
+const zendots = Zen_Dots({
+  subsets: ["latin"],
+  weight: ["400"],
+  variable: "--font-zendots", 
+  display: "swap",
+  preload: true,
+});
+
+const orbitron = Orbitron({
+  subsets: ["latin"],
+  weight: ["400"],
+  variable: "--font-orbitron", 
+  display: "swap",
+  preload: true,
+})
 
 const inter = Inter({
   subsets: ["latin"],
@@ -44,7 +60,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${inter.variable} ${greatVibes.variable} ${goldman.variable} ${audiowide.variable} antialiased`}>
+      <body className={`${inter.variable} ${greatVibes.variable} ${goldman.variable} ${audiowide.variable} ${zendots.variable} ${orbitron.variable} antialiased`}>
         {children}
       </body>
     </html>

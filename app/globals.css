@@ -1,5 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Audiowide:wght@400&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Goldman:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Goldman:wght@400;700&family=Zen+Dots&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Goldman:wght@400;700&family=Orbitron:wght@400..900&family=Zen+Dots&display=swap');
 @import "tailwindcss";
 
 :root {
@@ -32,6 +34,65 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+  overflow-x: hidden;
+}
+
+/* Responsive text utilities */
+.text-responsive-xs {
+  font-size: clamp(0.75rem, 2vw, 0.875rem);
+}
+
+.text-responsive-sm {
+  font-size: clamp(0.875rem, 2.5vw, 1rem);
+}
+
+.text-responsive-base {
+  font-size: clamp(1rem, 3vw, 1.125rem);
+}
+
+.text-responsive-lg {
+  font-size: clamp(1.125rem, 3.5vw, 1.25rem);
+}
+
+.text-responsive-xl {
+  font-size: clamp(1.25rem, 4vw, 1.5rem);
+}
+
+.text-responsive-2xl {
+  font-size: clamp(1.5rem, 5vw, 2rem);
+}
+
+.text-responsive-3xl {
+  font-size: clamp(2rem, 6vw, 3rem);
+}
+
+.text-responsive-4xl {
+  font-size: clamp(2.5rem, 8vw, 4rem);
+}
+
+.text-responsive-5xl {
+  font-size: clamp(3rem, 10vw, 5rem);
+}
+
+/* Responsive spacing utilities */
+.space-responsive-xs {
+  margin: clamp(0.25rem, 1vw, 0.5rem);
+}
+
+.space-responsive-sm {
+  margin: clamp(0.5rem, 2vw, 1rem);
+}
+
+.space-responsive-md {
+  margin: clamp(1rem, 3vw, 1.5rem);
+}
+
+.space-responsive-lg {
+  margin: clamp(1.5rem, 4vw, 2rem);
+}
+
+.space-responsive-xl {
+  margin: clamp(2rem, 5vw, 3rem);
 }
 
 .signature-style {
@@ -45,6 +106,14 @@ body {
 
 .audiowide-font {
   font-family: var(--font-audiowide), 'Audiowide', sans-serif;
+}
+
+.zendots {
+  font-family: var(--font-zendots), 'Zendots', sans-serif;
+}
+
+.orbitron {
+  font-family: 'Orbitron', sans-serif;
 }
 
 .goldman-regular {
@@ -73,6 +142,14 @@ body {
   font-family: var(--font-inter), "Inter", sans-serif !important;
 }
 
+.font-zendots {
+  font-family: var(--font-zendots), "Zendots", sans-serif !important;
+}
+
+.font-orbitron {
+  font-family: var(--font-orbitron), "Orbitron", sans-serif !important;
+}
+
 /* Direct font classes as backup */
 .direct-goldman {
   font-family: "Goldman", sans-serif !important;
@@ -80,4 +157,42 @@ body {
 
 .direct-audiowide {
   font-family: "Audiowide", sans-serif !important;
+}
+
+.direct-zendots {
+  font-family: "Zendots", sans-serif !important;
+}
+
+/* Mobile-first responsive improvements */
+@media (max-width: 640px) {
+  .container-responsive {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  
+  .text-mobile-sm {
+    font-size: 0.875rem;
+  }
+  
+  .text-mobile-base {
+    font-size: 1rem;
+  }
+  
+  .text-mobile-lg {
+    font-size: 1.125rem;
+  }
+}
+
+@media (min-width: 641px) and (max-width: 1024px) {
+  .container-responsive {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+}
+
+@media (min-width: 1025px) {
+  .container-responsive {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
 }

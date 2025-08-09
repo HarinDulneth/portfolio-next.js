@@ -4,28 +4,34 @@ import React, { Suspense, useEffect } from "react";
 import dynamic from "next/dynamic";
 
 // Fixed dynamic import - import the default export specifically
-const Spline = dynamic(() => import("@splinetool/react-spline").then(mod => ({ default: mod.default })), {
-  ssr: false,
-  loading: () => (
-    <div className="flex items-center justify-center h-screen bg-gray-900">
-      <div className="text-white text-xl">Loading 3D Scene...</div>
-    </div>
-  ),
-});
+const Spline = dynamic(
+  () =>
+    import("@splinetool/react-spline").then((mod) => ({
+      default: mod.default,
+    })),
+  {
+    ssr: false,
+    loading: () => (
+      <div className="flex items-center justify-center h-screen bg-gray-900">
+        <div className="text-white text-xl">Loading 3D Scene...</div>
+      </div>
+    ),
+  }
+);
 
 export function SplineScene() {
   useEffect(() => {
     // Suppress Spline console errors
     const originalError = console.error;
-    
+
     console.error = (...args: any[]) => {
-      const errorMessage = args[0]?.toString() || '';
+      const errorMessage = args[0]?.toString() || "";
       if (
-        errorMessage.includes('Missing property') ||
-        errorMessage.includes('buildTimeline') ||
-        errorMessage.includes('@splinetool/runtime')
+        errorMessage.includes("Missing property") ||
+        errorMessage.includes("buildTimeline") ||
+        errorMessage.includes("@splinetool/runtime")
       ) {
-        console.warn('Spline animation warning (suppressed):', ...args);
+        console.warn("Spline animation warning (suppressed):", ...args);
         return;
       }
       originalError.apply(console, args);
@@ -33,7 +39,7 @@ export function SplineScene() {
 
     // Hide watermark function
     const hideSplineWatermark = () => {
-      const style = document.createElement('style');
+      const style = document.createElement("style");
       style.textContent = `
         /* Hide Spline watermark */
         [data-spline-watermark],
@@ -57,35 +63,37 @@ export function SplineScene() {
 
       const removeWatermark = () => {
         const selectors = [
-          '[data-spline-watermark]',
-          '.spline-watermark',
+          "[data-spline-watermark]",
+          ".spline-watermark",
           'div[style*="position: absolute"][style*="bottom: 16px"][style*="right: 16px"]',
           'div[style*="position: absolute"][style*="bottom: 10px"][style*="right: 10px"]',
-          'a[href*="spline.design"]'
+          'a[href*="spline.design"]',
         ];
 
-        selectors.forEach(selector => {
+        selectors.forEach((selector) => {
           const elements = document.querySelectorAll(selector);
           elements.forEach((el: Element) => {
-            if (el && 'remove' in el && typeof el.remove === 'function') {
+            if (el && "remove" in el && typeof el.remove === "function") {
               el.remove();
             }
           });
         });
 
         // Check for watermark in canvas siblings
-        const canvases = document.querySelectorAll('canvas');
-        canvases.forEach(canvas => {
+        const canvases = document.querySelectorAll("canvas");
+        canvases.forEach((canvas) => {
           const parent = canvas.parentElement;
           if (parent) {
             const siblings = Array.from(parent.children);
-            siblings.forEach(sibling => {
-              if (sibling !== canvas && 
-                  'querySelector' in sibling && 
-                  typeof sibling.querySelector === 'function' &&
-                  sibling.querySelector('a[href*="spline"]') &&
-                  'remove' in sibling &&
-                  typeof sibling.remove === 'function') {
+            siblings.forEach((sibling) => {
+              if (
+                sibling !== canvas &&
+                "querySelector" in sibling &&
+                typeof sibling.querySelector === "function" &&
+                sibling.querySelector('a[href*="spline"]') &&
+                "remove" in sibling &&
+                typeof sibling.remove === "function"
+              ) {
                 sibling.remove();
               }
             });
@@ -118,19 +126,19 @@ export function SplineScene() {
         if (canvas) {
           console.log("Canvas found, applying optimizations");
           canvas.style.pointerEvents = "auto";
-          
+
           // Additional watermark removal after load
           setTimeout(() => {
             const watermarkSelectors = [
-              '[data-spline-watermark]',
+              "[data-spline-watermark]",
               'a[href*="spline.design"]',
-              'div[style*="position: absolute"][style*="bottom"]'
+              'div[style*="position: absolute"][style*="bottom"]',
             ];
-            
-            watermarkSelectors.forEach(selector => {
+
+            watermarkSelectors.forEach((selector) => {
               const elements = document.querySelectorAll(selector);
               elements.forEach((el: Element) => {
-                if ('remove' in el && typeof el.remove === 'function') {
+                if ("remove" in el && typeof el.remove === "function") {
                   el.remove();
                 }
               });
@@ -145,22 +153,24 @@ export function SplineScene() {
 
   const handleSplineError = (error: any) => {
     console.error("Spline loading error:", error);
-    
+
     // You could add fallback behavior here
     // For example, show a static image or alternative content
   };
 
   return (
-    <div className="relative z-20 w-full h-96 md:h-[500px] lg:h-[600px] my-20">
+    <div className="relative z-20 w-full h-64 sm:h-80 md:h-96 lg:h-[500px] xl:h-[600px] my-10 sm:my-16 md:my-20">
       {/* Container with proper z-index */}
-      <div className="relative w-full h-full rounded-2xl overflow-hidden bg-transparent">
+      <div className="relative w-full h-full rounded-lg sm:rounded-xl md:rounded-2xl overflow-hidden bg-transparent">
         <div className="absolute inset-0 z-25">
           <Suspense
             fallback={
-              <div className="flex items-center justify-center h-full bg-gray-900 rounded-2xl">
-                <div className="text-center">
-                  <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-white mx-auto mb-4"></div>
-                  <div className="text-white text-lg">Loading 3D Scene...</div>
+              <div className="flex items-center justify-center h-full bg-gray-900 rounded-lg sm:rounded-xl md:rounded-2xl">
+                <div className="text-center px-4">
+                  <div className="animate-spin rounded-full h-16 w-16 sm:h-24 sm:w-24 md:h-32 md:w-32 border-b-2 border-white mx-auto mb-4"></div>
+                  <div className="text-white text-sm sm:text-base md:text-lg">
+                    Loading 3D Scene...
+                  </div>
                 </div>
               </div>
             }
@@ -172,7 +182,7 @@ export function SplineScene() {
               style={{
                 width: "100%",
                 height: "100%",
-                borderRadius: "1rem", // Match the container's rounded-2xl
+                borderRadius: "0.5rem", // Match the container's rounded-lg on mobile
               }}
               onLoad={handleSplineLoad}
               onError={handleSplineError}
