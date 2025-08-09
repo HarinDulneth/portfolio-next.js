@@ -576,17 +576,6 @@ const CombinedDarkVeilWaves: React.FC<CombinedProps> = ({
           opacity: waveOpacity,
         }}
       />
-
-      {/* Cursor indicator */}
-      <div
-        className="absolute w-2 h-2 bg-red-500/30 rounded-full pointer-events-none"
-        style={{
-          zIndex: 3,
-          transform:
-            "translate3d(calc(var(--x) - 50%), calc(var(--y) - 50%), 0)",
-          willChange: "transform",
-        }}
-      />
     </div>
   );
 };
