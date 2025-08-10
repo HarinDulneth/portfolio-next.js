@@ -305,12 +305,12 @@ const Navbar: React.FC = () => {
                 : "max-h-0 opacity-0"
             }`}
           >
-            <div className="px-4 pb-4 space-y-2 border-t border-white/10">
+            <div className="px-4 pb-4 space-y-2">
               {navItems.map((item) => (
                 <Link
                   key={item.href}
                   href={item.href}
-                  className={`hover:text-white hover:bg-white/15 block px-3 py-2 rounded-md text-base font-medium transition-colors duration-200 ${
+                  className={`hover:text-white hover:bg-white/15 block px-3 py-2 rounded-md text-sm font-orbitron tracking-wider font-medium transition-colors duration-200 ${
                     isActive(item.href)
                       ? "text-white font-semibold bg-white/15"
                       : "text-white/90"
@@ -323,7 +323,7 @@ const Navbar: React.FC = () => {
               {/* Contact Button in Mobile Menu */}
               <Link
                 href="/contact"
-                className={`shadow-[inset_0_0_0_2px_#616467] text-center block px-6 py-3 mt-3 tracking-wider rounded-full text-md font-medium bg-transparent hover:text-black hover:border-white hover:bg-white dark:text-neutral-200 transition duration-200 ${
+                className={` text-center block px-6 py-3 mt-3 text-sm font-orbitron tracking-wider rounded-md font-medium bg-white/75 hover:bg-white dark:text-black transition duration-200 ${
                   isActive("/contact")
                     ? "bg-white text-black font-semibold"
                     : ""
