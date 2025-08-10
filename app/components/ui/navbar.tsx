@@ -193,11 +193,11 @@ const Navbar: React.FC = () => {
     <div className="fixed top-2 sm:top-3 md:top-5 left-2 sm:left-4 md:left-8 lg:left-20 right-2 sm:right-4 md:right-8 lg:right-20 z-50">
       {/* Single Unified Navigation Bar */}
       <nav
-        className={`transition-all duration-300 ${
+        className={`transition-all duration-300 shadow-2xl shadow-black/20 overflow-hidden ${
           isScrolled
             ? "bg-white/5 backdrop-blur-2xl"
             : "bg-white/3 backdrop-blur-xl"
-        } rounded-full shadow-2xl shadow-black/20`}
+        } rounded-lg md:rounded-full`}
       >
         {/* Desktop Navigation */}
         <div className="hidden md:flex items-center justify-between px-4 py-2">
@@ -302,7 +302,7 @@ const Navbar: React.FC = () => {
             className={`transition-all duration-300 ${
               isMobileMenuOpen
                 ? "max-h-80 opacity-100 visible"
-                : "max-h-0 opacity-0 invisible overflow-hidden"
+                : "max-h-0 opacity-0"
             }`}
           >
             <div className="px-4 pb-4 space-y-2 border-t border-white/10">

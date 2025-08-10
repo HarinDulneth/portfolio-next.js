@@ -38,36 +38,6 @@ const cardData: BentoCardProps[] = [
     description: "Track user behavior",
     label: "Insights",
   },
-  {
-    color: "#060010",
-    title: "Dashboard",
-    description: "Centralized data view",
-    label: "Overview",
-  },
-  {
-    color: "#060010",
-    title: "Collaboration",
-    description: "Work together seamlessly",
-    label: "Teamwork",
-  },
-  {
-    color: "#060010",
-    title: "Automation",
-    description: "Streamline workflows",
-    label: "Efficiency",
-  },
-  {
-    color: "#060010",
-    title: "Integration",
-    description: "Connect favorite tools",
-    label: "Connectivity",
-  },
-  {
-    color: "#060010",
-    title: "Security",
-    description: "Enterprise-grade protection",
-    label: "Protection",
-  },
 ];
 
 const createParticleElement = (
@@ -142,6 +112,7 @@ const ParticleCard: React.FC<{
   const memoizedParticles = useRef<HTMLDivElement[]>([]);
   const particlesInitialized = useRef(false);
   const magnetismAnimationRef = useRef<gsap.core.Tween | null>(null);
+  const hoverActive = useRef(false);
 
   const initializeParticles = useCallback(() => {
     if (particlesInitialized.current || !cardRef.current) return;
@@ -227,6 +198,7 @@ const ParticleCard: React.FC<{
 
     const handleMouseEnter = () => {
       isHoveredRef.current = true;
+      hoverActive.current = true;
       animateParticles();
 
       if (enableTilt) {
@@ -242,6 +214,7 @@ const ParticleCard: React.FC<{
 
     const handleMouseLeave = () => {
       isHoveredRef.current = false;
+      hoverActive.current = false;
       clearAllParticles();
 
       if (enableTilt) {
@@ -266,6 +239,7 @@ const ParticleCard: React.FC<{
     const handleMouseMove = (e: MouseEvent) => {
       if (!enableTilt && !enableMagnetism) return;
 
+      const card = cardRef.current;
       const rect = element.getBoundingClientRect();
       const x = e.clientX - rect.left;
       const y = e.clientY - rect.top;
@@ -276,9 +250,19 @@ const ParticleCard: React.FC<{
         const rotateX = ((y - centerY) / centerY) * -10;
         const rotateY = ((x - centerX) / centerX) * 10;
 
+        gsap.to(card, {
+          rotateX,
+          rotateY,
+          scale: hoverActive.current ? 1.05 : 1, // keep scale
+          transformPerspective: 1000,
+          duration: 0.2,
+          ease: "power2.out",
+        });
+
         gsap.to(element, {
           rotateX,
           rotateY,
+          scale: 1.05,
           duration: 0.1,
           ease: "power2.out",
           transformPerspective: 1000,
@@ -624,6 +608,10 @@ const MagicBento: React.FC<BentoProps> = ({
               grid-column: 4;
               grid-row: 3;
             }
+            .card {
+              transform-origin: center center;
+              will-change: transform;
+            }
           }
           
           .card--border-glow::after {
@@ -716,7 +704,7 @@ const MagicBento: React.FC<BentoProps> = ({
       <BentoCardGrid gridRef={gridRef}>
         <div className="card-responsive grid gap-2">
           {cardData.map((card, index) => {
-            const baseClassName = `card flex flex-col justify-between relative aspect-[4/3] min-h-[300px] w-full max-w-full p-5 rounded-[20px] border border-solid font-light overflow-hidden transition-all duration-300 ease-in-out hover:-translate-y-0.5 hover:shadow-[0_8px_25px_rgba(0,0,0,0.15)] ${
+            const baseClassName = `card flex flex-col justify-between relative aspect-[4/3] min-h-[300px] w-full max-w-full p-5 rounded-[20px] border border-solid font-light overflow-hidden transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-[0_8px_25px_rgba(0,0,0,0.15)] ${
               enableBorderGlow ? "card--border-glow" : ""
             }`;
 
@@ -881,9 +869,6 @@ const MagicBento: React.FC<BentoProps> = ({
                   el.addEventListener("click", handleClick);
                 }}
               >
-                <div className="card__header flex justify-between gap-3 relative text-white">
-                  <span className="card__label text-base">{card.label}</span>
-                </div>
                 <div className="card__content flex flex-col relative text-white">
                   <h3
                     className={`card__title font-normal text-base m-0 mb-1 ${
@@ -892,13 +877,6 @@ const MagicBento: React.FC<BentoProps> = ({
                   >
                     {card.title}
                   </h3>
-                  <p
-                    className={`card__description text-xs leading-5 opacity-90 ${
-                      textAutoHide ? "text-clamp-2" : ""
-                    }`}
-                  >
-                    {card.description}
-                  </p>
                 </div>
               </div>
             );

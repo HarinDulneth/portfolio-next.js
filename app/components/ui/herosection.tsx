@@ -4,7 +4,7 @@ import TypewriterText from "./typewriter-text";
 
 export default function HeroSection() {
   return (
-    <div className="flex justify-center items-center relative mt-50 my-20 z-10 overflow-hidden min-h-[60vh]">
+    <div className="flex justify-center items-center relative mt-55 my-20 z-10 overflow-hidden min-h-[60vh]">
       <div className="max-w-[89vw] lg:max-w-full xl:max-w-[75vw] flex flex-col items-center justify-center text-center">
         {/* Centered Content */}
         {/* <h2 className="uppercase tracking-widest text-xs text-center text-magic-blue max-w-80 mb-4">
@@ -61,7 +61,7 @@ export default function HeroSection() {
             enableMagnetism={true}
             clickEffect={true}
             spotlightRadius={300}
-            particleCount={5}
+            particleCount={3}
             glowColor="135, 0, 233"
           />
           <MagicBento
@@ -74,7 +74,7 @@ export default function HeroSection() {
             enableMagnetism={true}
             clickEffect={true}
             spotlightRadius={300}
-            particleCount={5}
+            particleCount={3}
             glowColor="135, 0, 233"
           />
           {/* <button className="relative w-[250px] inset-shadow-sm text-white py-5 tracking-wider rounded-full text-lg font-medium bg-white/5 backdrop-blur-lg border border-white/20 shadow-2xl shadow-black/30 dark:text-black transition duration-200 hover:scale-105 hover:bg-white/15 before:content-[''] before:absolute before:inset-0 before:rounded-full before:bg-gradient-to-br before:from-white/20 before:via-transparent before:to-transparent before:opacity-60">
