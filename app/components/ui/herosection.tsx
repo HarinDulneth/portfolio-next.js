@@ -1,12 +1,5 @@
-import AnimatedText from "./animated-text";
 import MagicBento from "./glassss-button";
-import TranslucentButton from "./glassss-button";
-import GradientText from "./gradient-text";
 import GradientTextGenerateEffect from "./gradient-textgenerate";
-import { LiquidButton } from "./liquid-glass-button";
-import ShinyButton from "./shiny-button";
-import { SplineEva } from "./splite-eva";
-import { TextGenerateEffect } from "./text-generate-effect";
 import TypewriterText from "./typewriter-text";
 
 export default function HeroSection() {
