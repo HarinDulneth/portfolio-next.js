@@ -715,7 +715,7 @@ const MagicBento: React.FC<BentoProps> = ({
             /* Make cards even more compact on very small screens */
             @media (max-width: 480px) {
               .bento-section {
-                width: 175px; /* Even smaller for tiny screens */
+                width: 235px; /* Even smaller for tiny screens */
               }
               
               .card-border-layer {
@@ -723,7 +723,7 @@ const MagicBento: React.FC<BentoProps> = ({
               }
               
               .card-content-layer {
-                padding: 12px 12px;
+                padding: 16px 16px;
               }
               
               .card__title {
