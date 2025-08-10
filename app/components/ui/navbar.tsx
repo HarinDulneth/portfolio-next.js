@@ -259,7 +259,7 @@ const Navbar: React.FC = () => {
         {/* Mobile Navigation */}
         <div className="md:hidden">
           {/* Mobile Header */}
-          <div className="flex items-center justify-between px-4 py-3">
+          <div className="flex items-center justify-between pr-4 py-3">
             {/* Left: Animated Signature */}
             <div className="flex-shrink-0">
               <AnimatedSignature />
