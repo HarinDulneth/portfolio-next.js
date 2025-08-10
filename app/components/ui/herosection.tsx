@@ -13,7 +13,7 @@ export default function HeroSection() {
 
         <TypewriterText
           // className="text-center text-[40px] md:text-5xl lg:text-7xl mb-5 goldman-regular uppercase"
-          className="relative uppercase tracking-widest text-lg font-semibold text-[#F3E5FC]/75 text-center font-zendots max-w-100"
+          className="relative uppercase tracking-widest lg:text-lg font-semibold text-[#F3E5FC]/75 text-center font-zendots max-w-100 md:text-md text-sm"
           // words="Transforming Concepts into seamless Experiences"
           text="Hi, I'm Harin Dulneth"
         />
@@ -33,7 +33,7 @@ export default function HeroSection() {
             <GradientTextGenerateEffect
               words="Transforming Concepts into seamless Experiences"
               colors={["#280045, #DBB2F8, #280045, #DBB2F8"]}
-              className="w-full h-full flex items-center justify-center uppercase lg:text-7xl font-goldman"
+              className="w-full h-full flex items-center justify-center uppercase lg:text-7xl font-goldman md:text-5xl text-4xl"
               animationSpeed={15}
               showBorder={false}
               duration={1}

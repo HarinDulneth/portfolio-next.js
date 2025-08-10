@@ -538,7 +538,8 @@ const MagicBento: React.FC<BentoProps> = ({
 }) => {
   const gridRef = useRef<HTMLDivElement>(null);
   const isMobile = useMobileDetection();
-  const shouldDisableAnimations = disableAnimations || isMobile;
+  const shouldDisableAnimations = disableAnimations;
+  const shouldDisableComplexAnimations = disableAnimations || isMobile;
 
   const cardData: BentoCardProps[] = [
     {
@@ -617,7 +618,7 @@ const MagicBento: React.FC<BentoProps> = ({
             content: '';
             position: absolute;
             inset: 0;
-            padding: 2px; /* Reduced from 6px to 2px */
+            padding: 3px; /* Reduced from 6px to 2px */
             background: radial-gradient(var(--glow-radius) circle at var(--glow-x) var(--glow-y),
                 rgba(${glowColor}, calc(var(--glow-intensity) * 0.8)) 0%,
                 rgba(${glowColor}, calc(var(--glow-intensity) * 0.4)) 30%,
@@ -687,6 +688,62 @@ const MagicBento: React.FC<BentoProps> = ({
             .card-responsive .card {
               width: 100%;
               min-height: 180px;
+            }
+          }
+          
+          @media (max-width: 767px) {
+            .bento-section {
+              width: 235px; /* Reduced from 275px */
+              font-size: clamp(0.8rem, 0.7rem + 0.4vw, 1.2rem); /* Smaller text scaling */
+            }
+            
+            .card-border-layer {
+              min-height: 50px; /* Reduced from 50px */
+              padding: 0; /* Remove any default padding */
+            }
+            
+            .card-content-layer {
+              padding: 16px 16px; /* Reduced from p-5 (20px) */
+            }
+            
+            .card__title {
+              font-size: 0.875rem; /* 14px, reduced from base (16px) */
+              line-height: 1.2;
+              margin-bottom: 0; /* Remove bottom margin */
+            }
+
+            /* Make cards even more compact on very small screens */
+            @media (max-width: 480px) {
+              .bento-section {
+                width: 160px; /* Even smaller for tiny screens */
+              }
+              
+              .card-border-layer {
+                min-height: 40px;
+              }
+              
+              .card-content-layer {
+                padding: 8px 12px;
+              }
+              
+              .card__title {
+                font-size: 0.75rem; /* 12px */
+              }
+            }
+          }
+          
+          /* Tablet size adjustments */
+          @media (min-width: 768px) and (max-width: 1023px) {
+            .bento-section {
+              width: 240px; /* Slightly smaller than desktop */
+            }
+            
+            .card-border-layer {
+              min-height: 45px;
+            }
+            
+            .card-content-layer {
+              padding: 16px 18px;
             }
           }
         `}
@@ -843,7 +900,7 @@ const MagicBento: React.FC<BentoProps> = ({
                         ripple,
                         { scale: 0, opacity: 1 },
                         {
-                          scale: 1,
+                          scale: 1.5,
                           opacity: 0,
                           duration: 0.8,
                           ease: "power2.out",
@@ -857,7 +914,7 @@ const MagicBento: React.FC<BentoProps> = ({
                     inner.addEventListener("click", handleClick);
                   }}
                 >
-                  <div className="card__content flex flex-col relative text-white">
+                  <div className="card__content flex flex-col relative text-white ">
                     <h3
                       className={`card__title font-normal text-base m-0 mb-1 ${
                         textAutoHide ? "text-clamp-1" : ""

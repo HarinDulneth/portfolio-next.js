@@ -197,7 +197,7 @@ const Navbar: React.FC = () => {
           isScrolled
             ? "bg-white/5 backdrop-blur-2xl"
             : "bg-white/3 backdrop-blur-xl"
-        } rounded-lg md:rounded-full`}
+        } rounded-xl md:rounded-full`}
       >
         {/* Desktop Navigation */}
         <div className="hidden md:flex items-center justify-between px-4 py-2">
@@ -222,9 +222,7 @@ const Navbar: React.FC = () => {
                 key={item.href}
                 href={item.href}
                 className={`hover:text-white px-4 py-2 rounded-full text-sm font-orbitron tracking-wider transition-none hover:rounded-none hover:border-b-2 ${
-                  isActive(item.href)
-                    ? "text-[#430074] font-semibold"
-                    : "text-white/90"
+                  isActive(item.href) ? "text-white" : "text-white/75"
                 }`}
               >
                 {item.label}
@@ -249,8 +247,8 @@ const Navbar: React.FC = () => {
             ))} */}
             <Link
               href="/contact"
-              className={`px-6 py-3 font-orbitron tracking-wider rounded-full text-md font-medium bg-transparent hover:scale-105 hover:bg-white hover:text-black dark:text-neutral-200 transition duration-200 ${
-                isActive("/contact") ? "text-[#430074] font-semibold" : ""
+              className={`px-6 py-3 font-orbitron tracking-wider rounded-full text-md font-medium bg-transparent hover:scale-105 hover:bg-white hover:text-black dark:text-white/75 transition duration-200 ${
+                isActive("/contact") ? "text-white font-semibold" : ""
               }`}
             >
               Contact
@@ -323,7 +321,7 @@ const Navbar: React.FC = () => {
               {/* Contact Button in Mobile Menu */}
               <Link
                 href="/contact"
-                className={` text-center block px-6 py-3 mt-3 text-sm font-orbitron tracking-wider rounded-md font-medium bg-white/75 hover:bg-white dark:text-black transition duration-200 ${
+                className={` text-center block px-6 py-3 mt-3 text-sm font-orbitron tracking-wider rounded-lg font-medium bg-white/75 hover:bg-white dark:text-black transition duration-200 ${
                   isActive("/contact")
                     ? "bg-white text-black font-semibold"
                     : ""
