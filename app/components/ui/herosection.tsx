@@ -4,7 +4,7 @@ import TypewriterText from "./typewriter-text";
 
 export default function HeroSection() {
   return (
-    <div className="flex justify-center items-center relative mt-55 sm:mt-40 my-20 z-10 overflow-hidden min-h-[60vh]">
+    <div className="flex justify-center items-center relative mt-55 sm:mt-30 my-20 z-10 overflow-hidden min-h-[60vh]">
       <div className="max-w-[89vw] lg:max-w-full xl:max-w-full flex flex-col items-center justify-center text-center">
         {/* Centered Content */}
         {/* <h2 className="uppercase tracking-widest text-xs text-center text-magic-blue max-w-80 mb-4">
