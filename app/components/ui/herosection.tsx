@@ -33,7 +33,7 @@ export default function HeroSection() {
             <GradientTextGenerateEffect
               words="Transforming Concepts into seamless Experiences"
               colors={["#280045, #DBB2F8, #280045, #DBB2F8"]}
-              className="w-full h-full flex items-center justify-center uppercase lg:text-7xl font-goldman md:text-5xl text-4xl"
+              className="w-full h-full flex items-center justify-center uppercase lg:text-7xl font-goldman md:text-5xl text-3xl"
               animationSpeed={15}
               showBorder={false}
               duration={1}
