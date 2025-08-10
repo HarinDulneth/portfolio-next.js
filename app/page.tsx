@@ -4,7 +4,6 @@ import { InfiniteMovingCards } from "./components/ui/infinite-moving-cards";
 import HeroSection from "./components/ui/herosection";
 import CombinedDarkVeilWaves from "./components/ui/combine-backround";
 
-
 export default function Home() {
   return (
     <div className="min-h-screen w-full overflow-x-hidden">
