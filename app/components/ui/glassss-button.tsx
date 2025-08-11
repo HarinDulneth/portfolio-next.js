@@ -543,7 +543,7 @@ const MagicBento: React.FC<BentoProps> = ({
 
   const cardData: BentoCardProps[] = [
     {
-      color: "#060010",
+      color: "#000000", //#060010
       title: title,
     },
   ];
