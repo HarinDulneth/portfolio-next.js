@@ -21,7 +21,7 @@ export default function HeroSection() {
 
         <TypewriterText
           className="relative max-w-fit uppercase tracking-widest lg:text-2xl font-semibold text-[#F3E5FC]/75 text-center font-goldman md:text-md text-sm"
-          text="Welcome to my Portfolio"
+          text="<Welcome to my Portfolio />"
         />
 
         {/* <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-6 gap-3 my-5">
