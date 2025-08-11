@@ -54,7 +54,7 @@ export default function HeroSection() {
         </div> */}
       </div>
       {/* Fixed Bottom Right Button - stays on screen while scrolling */}
-      <button className="fixed bottom-5 right-5 w-15 h-15 bg-black border border-[#252525] ring ring-[#151515] rounded-full flex items-center justify-center text-white text-2xl font-bold hover:border-gray-400 transition-colors duration-200 shadow-lg">
+      <button className="fixed bottom-5 right-5 lg:w-15 lg:h-15 w-13 h-13 bg-black border border-[#252525] ring ring-[#151515] rounded-full flex items-center justify-center text-white text-2xl font-bold hover:border-gray-400 transition-colors duration-200 shadow-lg">
         <svg
           fill="#FFFFFF"
           height="800px"
@@ -66,7 +66,7 @@ export default function HeroSection() {
           xmlnsXlink="http://www.w3.org/1999/xlink"
           viewBox="0 0 512.073 512.073"
           xmlSpace="preserve"
-          className="w-6 h-6"
+          className="lg:w-6 lg:h-6 w-4 h-4"
         >
           <g transform="translate(-1)">
             <g>
