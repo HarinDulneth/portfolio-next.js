@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { Goldman, Audiowide, Inter, Great_Vibes, Zen_Dots, Orbitron } from "next/font/google";
+import { Goldman, Audiowide, Inter, Zen_Dots, Orbitron } from "next/font/google";
 
 // Define fonts with proper configuration
 const goldman = Goldman({
@@ -41,12 +41,7 @@ const inter = Inter({
   display: "swap",
 });
 
-const greatVibes = Great_Vibes({
-  subsets: ["latin"],
-  weight: ["400"],
-  variable: "--font-great-vibes",
-  display: "swap",
-});
+
 
 export const metadata: Metadata = {
   title: "Harin Dulneth",
@@ -60,7 +55,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${inter.variable} ${greatVibes.variable} ${goldman.variable} ${audiowide.variable} ${zendots.variable} ${orbitron.variable} antialiased`}>
+      <body className={`${inter.variable} ${goldman.variable} ${audiowide.variable} ${zendots.variable} ${orbitron.variable} antialiased`}>
         {children}
       </body>
     </html>
