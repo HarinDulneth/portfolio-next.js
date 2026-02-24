@@ -197,3 +197,35 @@ body {
   }
 }
 
+/* Glowing conic-gradient border for cards */
+.gradient-card {
+  position: relative;
+  border-radius: 1rem;
+  z-index: 0;
+}
+
+.gradient-card::before {
+  content: "";
+  position: absolute;
+  inset: -4px; /* thickness of the glow */
+  border-radius: inherit;
+  background: conic-gradient(
+    from 0deg,
+    #064393,
+    #063093,
+    #450693,
+    #850693,
+    #450693,
+    #064393
+  );
+  filter: blur(10px);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.gradient-card:hover::before {
+  opacity: 0.5;
+}
+
