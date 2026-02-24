@@ -73,7 +73,7 @@ export default function ProjectCard({
         boxShadow: shadowStyle,
         transition: "transform 0.15s ease-out, box-shadow 0.15s ease-out",
         transformStyle: "preserve-3d",
-        background: isDark ? "#100B1F" : "#F3F3F7",
+        background: isDark ? "#11001F" : "#F3F3F7",
       }}
     >
       <div
