@@ -343,32 +343,38 @@ const CombinedBackground: React.FC<CombinedBackgroundProps> = ({
     if (!container || !veilCanvas || !wavesCanvas) return;
 
     // Initialize veil WebGL
-    const veilRenderer = new Renderer({
-      dpr: Math.min(window.devicePixelRatio, 2),
-      canvas: veilCanvas,
-    });
-    veilRendererRef.current = veilRenderer;
+    if (!veilRendererRef.current) {
+      const veilRenderer = new Renderer({
+        dpr: Math.min(window.devicePixelRatio, 2),
+        canvas: veilCanvas,
+      });
+      veilRendererRef.current = veilRenderer;
 
-    const gl = veilRenderer.gl;
-    const geometry = new Triangle(gl);
+      const gl = veilRenderer.gl;
+      const geometry = new Triangle(gl);
 
-    const program = new Program(gl, {
-      vertex,
-      fragment,
-      uniforms: {
-        uTime: { value: 0 },
-        uResolution: { value: new Vec2() },
-        uHueShift: { value: hueShift },
-        uNoise: { value: noiseIntensity },
-        uScan: { value: scanlineIntensity },
-        uScanFreq: { value: scanlineFrequency },
-        uWarp: { value: warpAmount },
-      },
-    });
-    veilProgramRef.current = program;
+      const program = new Program(gl, {
+        vertex,
+        fragment,
+        uniforms: {
+          uTime: { value: 0 },
+          uResolution: { value: new Vec2() },
+          uHueShift: { value: hueShift },
+          uNoise: { value: noiseIntensity },
+          uScan: { value: scanlineIntensity },
+          uScanFreq: { value: scanlineFrequency },
+          uWarp: { value: warpAmount },
+        },
+      });
+      veilProgramRef.current = program;
 
-    const mesh = new Mesh(gl, { geometry, program });
-    veilMeshRef.current = mesh;
+      const mesh = new Mesh(gl, { geometry, program });
+      veilMeshRef.current = mesh;
+    }
+
+    const veilRenderer = veilRendererRef.current;
+    const program = veilProgramRef.current!;
+    const mesh = veilMeshRef.current!;
 
     // Initialize waves canvas
     wavesCtxRef.current = wavesCanvas.getContext("2d");

@@ -250,6 +250,9 @@ const CombinedDarkVeilWaves: React.FC<CombinedProps> = ({
 }) => {
   // DarkVeil refs
   const darkVeilRef = useRef<HTMLCanvasElement>(null);
+  const rendererRef = useRef<Renderer | null>(null);
+  const programRef = useRef<Program | null>(null);
+  const meshRef = useRef<Mesh | null>(null);
 
   // Waves refs
   const containerRef = useRef<HTMLDivElement>(null);
@@ -281,37 +284,79 @@ const CombinedDarkVeilWaves: React.FC<CombinedProps> = ({
     set: false,
   });
 
+  const isVisibleRef = useRef(true);
   const frameIdRef = useRef<number | null>(null);
 
-  // DarkVeil effect
+  // Track whether the background is actually visible in the viewport
   useEffect(() => {
+    const container = containerRef.current;
+    if (!container || typeof IntersectionObserver === "undefined") return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        isVisibleRef.current = entry.isIntersecting;
+      },
+      { threshold: 0.1 }
+    );
+
+    observer.observe(container);
+
+    return () => {
+      observer.disconnect();
+    };
+  }, []);
+
+  // DarkVeil initialization
+  useEffect(() => {
+    // Ensure this only runs in a real browser environment
+    if (typeof window === "undefined") return;
+
     const canvas = darkVeilRef.current;
     const parent = containerRef.current;
     if (!canvas || !parent) return;
 
-    const renderer = new Renderer({
-      dpr: Math.min(window.devicePixelRatio, 2),
-      canvas,
-    });
+    if (!rendererRef.current) {
+      try {
+        const newRenderer = new Renderer({
+          dpr: Math.min(window.devicePixelRatio, 2),
+          canvas,
+          alpha: true,
+          premultipliedAlpha: false,
+        });
+        rendererRef.current = newRenderer;
+      } catch (error) {
+        console.warn(
+          "[CombinedDarkVeilWaves] Unable to create WebGL context; falling back without background.",
+          error
+        );
+        return;
+      }
 
-    const gl = renderer.gl;
-    const geometry = new Triangle(gl);
+      const gl = rendererRef.current.gl;
+      const geometry = new Triangle(gl);
 
-    const program = new Program(gl, {
-      vertex,
-      fragment,
-      uniforms: {
-        uTime: { value: 0 },
-        uResolution: { value: new Vec2() },
-        uHueShift: { value: hueShift },
-        uNoise: { value: noiseIntensity },
-        uScan: { value: scanlineIntensity },
-        uScanFreq: { value: scanlineFrequency },
-        uWarp: { value: warpAmount },
-      },
-    });
+      const program = new Program(gl, {
+        vertex,
+        fragment,
+        uniforms: {
+          uTime: { value: 0 },
+          uResolution: { value: new Vec2() },
+          uHueShift: { value: hueShift },
+          uNoise: { value: noiseIntensity },
+          uScan: { value: scanlineIntensity },
+          uScanFreq: { value: scanlineFrequency },
+          uWarp: { value: warpAmount },
+        },
+      });
+      programRef.current = program;
 
-    const mesh = new Mesh(gl, { geometry, program });
+      const mesh = new Mesh(gl, { geometry, program });
+      meshRef.current = mesh;
+    }
+
+    const renderer = rendererRef.current;
+    const program = programRef.current!;
+    const mesh = meshRef.current!;
 
     const resize = () => {
       const w = parent.clientWidth,
@@ -324,34 +369,49 @@ const CombinedDarkVeilWaves: React.FC<CombinedProps> = ({
     resize();
 
     const start = performance.now();
-    let frame = 0;
+    let frameId: number;
 
-    const loop = () => {
-      program.uniforms.uTime.value =
-        ((performance.now() - start) / 1000) * speed;
+    const loop = (t: number) => {
+      program.uniforms.uTime.value = ((t - start) / 1000) * speed;
+      // These uniforms are updated in the loop to reflect current prop values
       program.uniforms.uHueShift.value = hueShift;
       program.uniforms.uNoise.value = noiseIntensity;
       program.uniforms.uScan.value = scanlineIntensity;
       program.uniforms.uScanFreq.value = scanlineFrequency;
       program.uniforms.uWarp.value = warpAmount;
-      renderer.render({ scene: mesh });
-      frame = requestAnimationFrame(loop);
+
+      // Only render when this background is actually on screen
+      if (isVisibleRef.current) {
+        renderer.render({ scene: mesh });
+      }
+
+      frameId = requestAnimationFrame(loop);
     };
 
-    loop();
+    frameId = requestAnimationFrame(loop);
 
     return () => {
-      cancelAnimationFrame(frame);
+      cancelAnimationFrame(frameId);
       window.removeEventListener("resize", resize);
+
+      // Proactively release WebGL resources to avoid context exhaustion
+      if (rendererRef.current) {
+        const gl = rendererRef.current.gl as WebGLRenderingContext | null;
+        const loseCtx = gl?.getExtension("WEBGL_lose_context");
+        loseCtx?.loseContext();
+        rendererRef.current = null;
+        programRef.current = null;
+        meshRef.current = null;
+      }
     };
   }, [
+    speed,
+    resolutionScale,
     hueShift,
     noiseIntensity,
     scanlineIntensity,
-    speed,
     scanlineFrequency,
     warpAmount,
-    resolutionScale,
   ]);
 
   // Waves effect
@@ -474,6 +534,12 @@ const CombinedDarkVeilWaves: React.FC<CombinedProps> = ({
 
     function tick(t: number) {
       if (!container) return;
+
+      // Skip heavy work when this section is not visible
+      if (!isVisibleRef.current) {
+        frameIdRef.current = requestAnimationFrame(tick);
+        return;
+      }
       const mouse = mouseRef.current;
       mouse.sx += (mouse.x - mouse.sx) * 0.1;
       mouse.sy += (mouse.y - mouse.sy) * 0.1;
@@ -524,7 +590,7 @@ const CombinedDarkVeilWaves: React.FC<CombinedProps> = ({
     frameIdRef.current = requestAnimationFrame(tick);
     window.addEventListener("resize", onResize);
     window.addEventListener("mousemove", onMouseMove);
-    window.addEventListener("touchmove", onTouchMove, { passive: false });
+    window.addEventListener("touchmove", onTouchMove, { passive: true });
 
     return () => {
       window.removeEventListener("resize", onResize);

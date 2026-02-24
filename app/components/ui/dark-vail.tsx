@@ -95,33 +95,46 @@ export default function DarkVeil({
   resolutionScale = 1,
 }: Props) {
   const ref = useRef<HTMLCanvasElement>(null);
+  const rendererRef = useRef<Renderer | null>(null);
+  const programRef = useRef<Program | null>(null);
+  const meshRef = useRef<Mesh | null>(null);
+
   useEffect(() => {
     const canvas = ref.current as HTMLCanvasElement;
     const parent = canvas.parentElement as HTMLElement;
 
-    const renderer = new Renderer({
-      dpr: Math.min(window.devicePixelRatio, 2),
-      canvas,
-    });
+    if (!rendererRef.current) {
+      const renderer = new Renderer({
+        dpr: Math.min(window.devicePixelRatio, 2),
+        canvas,
+      });
+      rendererRef.current = renderer;
 
-    const gl = renderer.gl;
-    const geometry = new Triangle(gl);
+      const gl = renderer.gl;
+      const geometry = new Triangle(gl);
 
-    const program = new Program(gl, {
-      vertex,
-      fragment,
-      uniforms: {
-        uTime: { value: 0 },
-        uResolution: { value: new Vec2() },
-        uHueShift: { value: hueShift },
-        uNoise: { value: noiseIntensity },
-        uScan: { value: scanlineIntensity },
-        uScanFreq: { value: scanlineFrequency },
-        uWarp: { value: warpAmount },
-      },
-    });
+      const program = new Program(gl, {
+        vertex,
+        fragment,
+        uniforms: {
+          uTime: { value: 0 },
+          uResolution: { value: new Vec2() },
+          uHueShift: { value: hueShift },
+          uNoise: { value: noiseIntensity },
+          uScan: { value: scanlineIntensity },
+          uScanFreq: { value: scanlineFrequency },
+          uWarp: { value: warpAmount },
+        },
+      });
+      programRef.current = program;
 
-    const mesh = new Mesh(gl, { geometry, program });
+      const mesh = new Mesh(gl, { geometry, program });
+      meshRef.current = mesh;
+    }
+
+    const renderer = rendererRef.current;
+    const program = programRef.current!;
+    const mesh = meshRef.current!;
 
     const resize = () => {
       const w = parent.clientWidth,
@@ -134,24 +147,23 @@ export default function DarkVeil({
     resize();
 
     const start = performance.now();
-    let frame = 0;
+    let frameId: number;
 
-    const loop = () => {
-      program.uniforms.uTime.value =
-        ((performance.now() - start) / 1000) * speed;
+    const loop = (t: number) => {
+      program.uniforms.uTime.value = ((t - start) / 1000) * speed;
       program.uniforms.uHueShift.value = hueShift;
       program.uniforms.uNoise.value = noiseIntensity;
       program.uniforms.uScan.value = scanlineIntensity;
       program.uniforms.uScanFreq.value = scanlineFrequency;
       program.uniforms.uWarp.value = warpAmount;
       renderer.render({ scene: mesh });
-      frame = requestAnimationFrame(loop);
+      frameId = requestAnimationFrame(loop);
     };
 
-    loop();
+    frameId = requestAnimationFrame(loop);
 
     return () => {
-      cancelAnimationFrame(frame);
+      cancelAnimationFrame(frameId);
       window.removeEventListener("resize", resize);
     };
   }, [
