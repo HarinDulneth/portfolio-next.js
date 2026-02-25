@@ -1,6 +1,8 @@
 "use client";
 
 import Image from "next/image";
+import { useAnimate } from "framer-motion";
+import { useRef, useCallback } from "react";
 
 interface Skill {
   name: string;
@@ -69,6 +71,27 @@ const skillCategories: SkillCategory[] = [
   },
 ];
 
+// Clip-path animation constants
+const NO_CLIP = "polygon(0 0, 100% 0, 100% 100%, 0% 100%)";
+const BOTTOM_RIGHT_CLIP = "polygon(0 0, 100% 0, 0 0, 0% 100%)";
+const TOP_RIGHT_CLIP = "polygon(0 0, 0 100%, 100% 100%, 0% 100%)";
+const BOTTOM_LEFT_CLIP = "polygon(100% 100%, 100% 0, 100% 100%, 0 100%)";
+const TOP_LEFT_CLIP = "polygon(0 0, 100% 0, 100% 100%, 100% 0)";
+
+const ENTRANCE_KEYFRAMES: Record<string, string[]> = {
+  left: [BOTTOM_RIGHT_CLIP, NO_CLIP],
+  bottom: [BOTTOM_RIGHT_CLIP, NO_CLIP],
+  top: [BOTTOM_RIGHT_CLIP, NO_CLIP],
+  right: [TOP_LEFT_CLIP, NO_CLIP],
+};
+
+const EXIT_KEYFRAMES: Record<string, string[]> = {
+  left: [NO_CLIP, TOP_RIGHT_CLIP],
+  bottom: [NO_CLIP, TOP_RIGHT_CLIP],
+  top: [NO_CLIP, TOP_RIGHT_CLIP],
+  right: [NO_CLIP, BOTTOM_LEFT_CLIP],
+};
+
 function SkillBadge({ skill, large = false }: { skill: Skill; large?: boolean }) {
   return (
     <Image
@@ -79,6 +102,72 @@ function SkillBadge({ skill, large = false }: { skill: Skill; large?: boolean })
       className={`object-contain ${large ? "h-14 w-14" : "h-10 w-10"}`}
       unoptimized
     />
+  );
+}
+
+function SkillCell({
+  skill,
+  large,
+  borderClasses,
+}: {
+  skill: Skill;
+  large: boolean;
+  borderClasses: string;
+}) {
+  const [scope, animate] = useAnimate();
+
+  const getNearestSide = useCallback((e: React.MouseEvent) => {
+    const box = (e.currentTarget as HTMLElement).getBoundingClientRect();
+    const proximities = [
+      { proximity: Math.abs(box.left - e.clientX), side: "left" },
+      { proximity: Math.abs(box.right - e.clientX), side: "right" },
+      { proximity: Math.abs(box.top - e.clientY), side: "top" },
+      { proximity: Math.abs(box.bottom - e.clientY), side: "bottom" },
+    ];
+    proximities.sort((a, b) => a.proximity - b.proximity);
+    return proximities[0].side;
+  }, []);
+
+  const handleMouseEnter = (e: React.MouseEvent) => {
+    const side = getNearestSide(e);
+    animate(scope.current, {
+      clipPath: ENTRANCE_KEYFRAMES[side],
+    });
+  };
+
+  const handleMouseLeave = (e: React.MouseEvent) => {
+    const side = getNearestSide(e);
+    animate(scope.current, {
+      clipPath: EXIT_KEYFRAMES[side],
+    });
+  };
+
+  return (
+    <div
+      className={`relative flex-1 bg-[#f4f5fb] ${borderClasses}`}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+    >
+      <div
+        className={
+          "flex w-full items-center justify-center " +
+          (large ? "h-24 md:h-28 lg:h-32" : "h-16 md:h-20 lg:h-24")
+        }
+      >
+        <SkillBadge skill={skill} large={large} />
+      </div>
+
+      {/* Clip-path overlay */}
+      <div
+        ref={scope}
+        style={{ clipPath: BOTTOM_RIGHT_CLIP }}
+        className="absolute inset-0 flex items-center justify-center bg-black"
+      >
+        <span className="text-sm font-semibold text-white text-center md:text-base">
+          {skill.name}
+        </span>
+      </div>
+    </div>
   );
 }
 
@@ -99,35 +188,17 @@ function BrickWall({
           {Array.from({ length: count }).map((_, i) => {
             const skill = skills[idx];
             idx++;
+            if (!skill) return null;
+            const borderClasses =
+              (i > 0 ? " border-l border-black/10" : "") +
+              (rowIdx > 0 ? " border-t border-black/10" : "");
             return (
-              <div
+              <SkillCell
                 key={i}
-                className={
-                  "group flex-1 bg-[#f4f5fb] transition-colors duration-300 hover:bg-black" +
-                  (i > 0 ? " border-l border-black/10" : "") +
-                  (rowIdx > 0 ? " border-t border-black/10" : "")
-                }
-              >
-                {skill && (
-                  <div
-                    className={
-                      "relative flex w-full items-center justify-center " +
-                      (largeIcons
-                        ? "h-24 md:h-28 lg:h-32"
-                        : "h-16 md:h-20 lg:h-24")
-                    }
-                  >
-                    <div className="absolute inset-0 flex items-center justify-center transition-opacity duration-300 group-hover:opacity-0">
-                      <SkillBadge skill={skill} large={largeIcons} />
-                    </div>
-                    <div className="absolute inset-0 flex items-center justify-center transition-opacity duration-300 opacity-0 group-hover:opacity-100">
-                      <span className="text-sm font-semibold text-white text-center md:text-base">
-                        {skill.name}
-                      </span>
-                    </div>
-                  </div>
-                )}
-              </div>
+                skill={skill}
+                large={largeIcons}
+                borderClasses={borderClasses}
+              />
             );
           })}
         </div>

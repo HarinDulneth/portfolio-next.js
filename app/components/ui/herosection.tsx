@@ -25,7 +25,7 @@ export default function HeroSection() {
           text="<Welcome to my Portfolio />"
         />
 
-        <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-6 gap-3 mt-20">
+        {/* <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-6 gap-3 mt-20">
           <MagicBento
             title="Show My Work"
             textAutoHide={true}
@@ -52,7 +52,7 @@ export default function HeroSection() {
             particleCount={3}
             glowColor="135, 0, 233"
           />
-        </div>
+        </div> */}
       </div>
       {/* <button className="fixed bottom-5 right-5 lg:w-15 lg:h-15 w-13 h-13 bg-black border border-[#252525] ring ring-[#151515] rounded-full flex items-center justify-center text-white text-2xl font-bold hover:border-gray-400 transition-colors duration-200 shadow-lg">
         <svg

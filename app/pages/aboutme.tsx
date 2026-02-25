@@ -2,18 +2,20 @@
 
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
+import { Lens } from "@/app/components/ui/lens";
+import { Bot } from "lucide-react";
 
 export default function About() {
   const sectionRef = useRef<HTMLDivElement>(null);
   const [isVisible, setIsVisible] = useState(false);
+  const [hovering, setHovering] = useState(false);
+  const [cardHovered, setCardHovered] = useState(false);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setIsVisible(true);
-          }
+          setIsVisible(entry.isIntersecting);
         });
       },
       { threshold: 0.15 }
@@ -29,7 +31,7 @@ export default function About() {
   return (
     <div className="min-h-screen flex flex-col items-center bg-black py-16 px-4 sm:px-8">
       {/* Heading */}
-      <h2 className="font-orbitron text-white text-4xl sm:text-5xl md:text-5xl font-bold mb-12 tracking-wide pb-15">
+      <h2 className="font-orbitron text-white text-4xl sm:text-5xl md:text-5xl font-bold mb-15 tracking-wide pb-15">
         About Me
       </h2>
 
@@ -39,30 +41,66 @@ export default function About() {
         className="relative w-full max-w-[1200px]"
         style={{ minHeight: "580px" }}
       >
-        {/* White card background - only 1/4 of image overlaps */}
+        {/* Glow stripe — hidden initially, revealed on card hover */}
         <div
-          className="absolute bg-white rounded-2xl shadow-2xl"
+          className="pointer-events-none absolute flex items-end justify-center"
           style={{
-            top: "-45px",
             left: "247px",
             right: "0",
-            bottom: "-60px",
+            bottom: "-75px",
+            height: "70px",
+            borderRadius: "0 0 28px 28px",
+            background: "linear-gradient(90deg, #7B2FBE, #9B59B6, #7B2FBE)",
+            boxShadow: "0 20px 60px -10px rgba(123,47,190,0.8), 0 10px 30px -5px rgba(155,89,182,0.6)",
+            zIndex: 1,
+            opacity: cardHovered ? 1 : 0,
+            transition: "opacity 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94)",
           }}
-        />
+        >
+          <span className="font-inter text-black text-xs font-normal pb-1 tracking-wide">
+            Ask anything from my AI assistant <Bot className="inline h-3.5 w-3.5 ml-1" />
+          </span>
+        </div>
 
-        {/* Content layer */}
+        {/* Wrapper for card + content — lifts up on hover */}
+        <div
+          onMouseEnter={() => setCardHovered(true)}
+          onMouseLeave={() => setCardHovered(false)}
+          style={{
+            position: "relative",
+            transform: cardHovered ? "translateY(-25px)" : "translateY(0)",
+            transition: "transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94)",
+            zIndex: 2,
+          }}
+        >
+          {/* Card background with radial gradient */}
+          <div
+            className="absolute rounded-[28px] shadow-2xl"
+            style={{
+              top: "-45px",
+              left: "247px",
+              right: "0",
+              bottom: "-80px",
+              background: "radial-gradient(120% 120% at 30% 10%, #1a1a1a 0%, #0f0f10 60%, #0b0b0c 100%)",
+            }}
+          />
+
+          {/* Content layer */}
         <div className="relative z-10 flex flex-col md:flex-row">
           {/* Left: Image */}
           <div className="flex-shrink-0 pt-10" style={{ width: "380px" }}>
-            <div className="rounded-xl overflow-hidden shadow-2xl aspect-[3/4] relative">
-              <Image
-                src="/me.jpg"
-                alt="Harin Dulneth"
-                fill
-                className="object-cover"
-                sizes="380px"
-                priority
-              />
+            <div className="rounded-2xl overflow-hidden shadow-2xl aspect-[3/4] relative">
+              <Lens hovering={hovering} setHovering={setHovering}>
+                <Image
+                  src="/me.jpg"
+                  alt="Harin Dulneth"
+                  width={380}
+                  height={507}
+                  className="object-cover w-full h-full"
+                  sizes="380px"
+                  priority
+                />
+              </Lens>
             </div>
           </div>
 
@@ -85,13 +123,13 @@ export default function About() {
               }}
             >
               <div
-                className="px-8 py-7 sm:px-10 sm:py-8 ml-5"
+                className="px-8 py-7 sm:px-10 sm:py-8 ml-5 bg-white/10"
                 style={{
-                  background: "linear-gradient(135deg, #E6C9FF, #D2CCFF)",
-                  borderRadius: "10px 0 0 10px",
+                  // background: "linear-gradient(135deg, #E6C9FF, #D2CCFF)",
+                  borderRadius: "15px 0 0 15px",
                 }}
               >
-                <p className="font-inter text-black text-xl sm:text-2xl font-md">
+                <p className="font-inter text-white text-lg sm:text-2xl font-md">
                   Hello There!
                 </p>
               </div>
@@ -114,13 +152,13 @@ export default function About() {
               }}
             >
               <div
-                className="pl-15 pr-8 py-8 sm:pl-25 sm:pr-10 sm:py-9 mr-5"
+                className="pl-15 pr-8 py-7 sm:pl-25 sm:pr-10 sm:py-8 mr-5 bg-white/10"
                 style={{
-                  background: "linear-gradient(135deg, #E6C9FF, #D2CCFF)",
-                  borderRadius: "0 10px 10px 0",
+                  // background: "linear-gradient(135deg, #E6C9FF, #D2CCFF)",
+                  borderRadius: "0 15px 15px 0",
                 }}
               >
-                <p className="font-inter text-black text-base sm:text-lg leading-relaxed">
+                <p className="font-inter text-white text-base sm:text-lg leading-relaxed">
                   I am a Computer Science undergraduate with a solid foundation
                   in full-stack development and a strong interest in AI
                   developments and applied ML.
@@ -135,26 +173,27 @@ export default function About() {
               - All borders rounded
             */}
             <div
-              className="px-8 py-8 sm:px-10 sm:py-9 mx-15"
+              className="px-8 py-8 sm:px-10 sm:py-9 mx-15 bg-white/10"
               style={{
-                background: "linear-gradient(135deg, #E6C9FF, #D2CCFF)",
-                borderRadius: "10px",
+                // background: "linear-gradient(135deg, #E6C9FF, #D2CCFF)",
+                borderRadius: "15px",
               }}
             >
-              <p className="font-inter text-black text-base sm:text-lg leading-relaxed mb-4">
+              <p className="font-inter text-white text-base sm:text-md leading-relaxed mb-4">
                 I&apos;m xperienced in .NET/C# and building RESTful APIs, with
                 strong skills in JavaScript/TypeScript, React, and Node.js.
                 Proficient in AI/ML workflows using Python, PyTorch/TensorFlow
                 and modern LLM ecosystems (Hugging Face, Groq APIs), including
                 model integration.
               </p>
-              <p className="font-inter text-black text-base sm:text-lg leading-relaxed">
+              <p className="font-inter text-white text-base sm:text-md leading-relaxed">
                 I also work with SQL/NoSQL databases (PostgreSQL/Supabase,
                 MongoDB), Git/GitHub, Docker, and CI/CD, focused on delivering
                 reliable, maintainable solutions while continuously learning.
               </p>
             </div>
           </div>
+        </div>
         </div>
       </div>
     </div>
