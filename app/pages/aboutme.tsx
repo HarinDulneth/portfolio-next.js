@@ -123,13 +123,13 @@ export default function About() {
               }}
             >
               <div
-                className="px-8 py-7 sm:px-10 sm:py-8 ml-5 bg-white/10"
+                className="group/hello px-8 py-7 sm:px-10 sm:py-8 ml-5 bg-[#0B0C0E] hover:bg-[#3F0D77] transition-colors duration-300 cursor-pointer"
                 style={{
                   // background: "linear-gradient(135deg, #E6C9FF, #D2CCFF)",
                   borderRadius: "15px 0 0 15px",
                 }}
               >
-                <p className="font-inter text-white text-lg sm:text-2xl font-md">
+                <p className="font-inter text-white group-hover/hello:text-black text-lg sm:text-2xl font-md transition-colors duration-300">
                   Hello There!
                 </p>
               </div>
@@ -152,13 +152,13 @@ export default function About() {
               }}
             >
               <div
-                className="pl-15 pr-8 py-7 sm:pl-25 sm:pr-10 sm:py-8 mr-5 bg-white/10"
+                className="group/cs pl-15 pr-8 py-7 sm:pl-25 sm:pr-10 sm:py-8 mr-5 bg-[#0B0C0E] hover:bg-[#3F0D77] transition-colors duration-300 cursor-pointer"
                 style={{
                   // background: "linear-gradient(135deg, #E6C9FF, #D2CCFF)",
                   borderRadius: "0 15px 15px 0",
                 }}
               >
-                <p className="font-inter text-white text-base sm:text-lg leading-relaxed">
+                <p className="font-inter text-white group-hover/cs:text-black text-base sm:text-lg leading-relaxed transition-colors duration-300">
                   I am a Computer Science undergraduate with a solid foundation
                   in full-stack development and a strong interest in AI
                   developments and applied ML.
@@ -173,20 +173,20 @@ export default function About() {
               - All borders rounded
             */}
             <div
-              className="px-8 py-8 sm:px-10 sm:py-9 mx-15 bg-white/10"
+              className="group/skills px-8 py-8 sm:px-10 sm:py-9 mx-15 bg-white/10 hover:bg-[#3F0D77] transition-colors duration-300 cursor-pointer"
               style={{
                 // background: "linear-gradient(135deg, #E6C9FF, #D2CCFF)",
                 borderRadius: "15px",
               }}
             >
-              <p className="font-inter text-white text-base sm:text-md leading-relaxed mb-4">
+              <p className="font-inter text-white group-hover/skills:text-black text-base sm:text-md leading-relaxed mb-4 transition-colors duration-300">
                 I&apos;m xperienced in .NET/C# and building RESTful APIs, with
                 strong skills in JavaScript/TypeScript, React, and Node.js.
                 Proficient in AI/ML workflows using Python, PyTorch/TensorFlow
                 and modern LLM ecosystems (Hugging Face, Groq APIs), including
                 model integration.
               </p>
-              <p className="font-inter text-white text-base sm:text-md leading-relaxed">
+              <p className="font-inter text-white group-hover/skills:text-black text-base sm:text-md leading-relaxed transition-colors duration-300">
                 I also work with SQL/NoSQL databases (PostgreSQL/Supabase,
                 MongoDB), Git/GitHub, Docker, and CI/CD, focused on delivering
                 reliable, maintainable solutions while continuously learning.
