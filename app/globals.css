@@ -2,6 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Goldman:wght@400;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Goldman:wght@400;700&family=Zen+Dots&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Goldman:wght@400;700&family=Orbitron:wght@400..900&family=Zen+Dots&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lao+Muang+Don&display=swap');
 @import "tailwindcss";
 
 :root {
@@ -17,6 +18,7 @@
       transform: translate(calc(-50% - 0.5rem));
     }
   }
+
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
@@ -101,7 +103,7 @@ body {
   font-weight: 400;
   letter-spacing: 2px;
   transform: rotate(-3deg) skew(-5deg);
-  text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
 }
 
 .audiowide-font {
@@ -169,15 +171,15 @@ body {
     padding-left: 1rem;
     padding-right: 1rem;
   }
-  
+
   .text-mobile-sm {
     font-size: 0.875rem;
   }
-  
+
   .text-mobile-base {
     font-size: 1rem;
   }
-  
+
   .text-mobile-lg {
     font-size: 1.125rem;
   }
@@ -207,17 +209,16 @@ body {
 .gradient-card::before {
   content: "";
   position: absolute;
-  inset: -4px; /* thickness of the glow */
+  inset: -4px;
+  /* thickness of the glow */
   border-radius: inherit;
-  background: conic-gradient(
-    from 0deg,
-    #064393,
-    #063093,
-    #450693,
-    #850693,
-    #450693,
-    #064393
-  );
+  background: conic-gradient(from 0deg,
+      #064393,
+      #063093,
+      #450693,
+      #850693,
+      #450693,
+      #064393);
   filter: blur(10px);
   opacity: 0;
   transition: opacity 0.3s ease;
@@ -229,3 +230,27 @@ body {
   opacity: 0.5;
 }
 
+/* About Me section slide-in animations */
+.about-slide-left {
+  transform: translateX(100%);
+  opacity: 0;
+  transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    opacity 0.8s ease;
+}
+
+.about-slide-right {
+  transform: translateX(-100%);
+  opacity: 0;
+  transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.2s,
+    opacity 0.8s ease 0.2s;
+}
+
+.about-slide-left.about-slide-visible {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+.about-slide-right.about-slide-visible {
+  transform: translateX(0);
+  opacity: 1;
+}
