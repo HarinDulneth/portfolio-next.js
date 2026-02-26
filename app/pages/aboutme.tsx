@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { Lens } from "@/app/components/ui/lens";
-import { Bot } from "lucide-react";
+import { Bot, BrainCircuit, Server, GitBranch } from "lucide-react";
 import InteractiveShader from "@/app/components/ui/crystal-shader";
 import { SkillHoverCard } from "@/app/components/ui/skill-hover-card";
 
@@ -138,21 +138,21 @@ export default function About() {
               }}
             >
               <div
-                className="group/hello relative overflow-hidden px-8 py-7 sm:px-10 sm:py-8 ml-5 bg-black hover:bg-[#3F0D77] transition-colors duration-300 cursor-pointer"
+                className="group/hello relative overflow-hidden px-8 py-7 sm:px-10 sm:py-8 ml-5 bg-black/50 hover:bg-[#3F0D77] transition-colors duration-300"
                 style={{
                   borderRadius: "15px 0 0 15px",
                 }}
               >
-                <InteractiveShader
+                {/* <InteractiveShader
                   cellDensity={1.5}
                   animationSpeed={0.15}
                   warpFactor={0.4}
                   mouseInfluence={0.1}
                   brightness={0.25}
                   className="rounded-[15px_0_0_15px]"
-                />
+                /> */}
                 <p className="relative z-10 font-inter text-white/85 text-lg sm:text-2xl font-md">
-                  <span className="text-[#9100FF]/85">Hello</span> There!
+                  <span className="text-white/85 group-hover/hello:text-black transition-colors duration-300">Hello</span> There!
                 </p>
               </div>
             </div>
@@ -174,43 +174,43 @@ export default function About() {
               }}
             >
               <div
-                className="group/cs relative overflow-hidden pl-15 pr-8 py-7 sm:pl-25 sm:pr-10 sm:py-8 mr-5 bg-black hover:bg-[#3F0D77] transition-colors duration-300 cursor-pointer"
+                className="group/cs relative overflow-hidden pl-15 pr-8 py-7 sm:pl-25 sm:pr-10 sm:py-8 mr-5 bg-black/50 hover:bg-[#3F0D77] transition-colors duration-300"
                 style={{
                   borderRadius: "0 15px 15px 0",
                 }}
               >
-                <InteractiveShader
+                {/* <InteractiveShader
                   cellDensity={2}
                   animationSpeed={0.15}
                   warpFactor={0.4}
                   mouseInfluence={0.1}
                   brightness={0.25}
                   className="rounded-[0_15px_15px_0]"
-                />
+                /> */}
                 <p className="relative z-10 font-inter text-white/85 text-base sm:text-lg">
-                  I am a <span className="text-[#9100FF]/85">Computer Science</span> undergraduate with a solid foundation
-                  in full-stack development and a strong interest in <span className="text-[#9100FF]/85">AI
+                  I am a <span className="text-white/85 group-hover/cs:text-[#9100FF] transition-colors duration-300">Computer Science</span> undergraduate with a solid foundation
+                  in full-stack development and a strong interest in <span className="text-white/85 group-hover/cs:text-[#9100FF] transition-colors duration-300">AI
                   developments</span> and applied Machine Learning.
                 </p>
               </div>
             </div>
 
-            {/* Skills cards — 3 horizontal, hover-card style */}
-            <div className="grid grid-cols-3 gap-4 mx-8 h-72 mt-4">
+            {/* Skills cards — 3 horizontal */}
+            <div className="grid grid-cols-3 gap-4 mx-8 mt-4">
               <SkillHoverCard
                 title="AI / ML & LLM"
-                description="Proficient in AI/ML workflows using Python, PyTorch & modern LLM ecosystems"
-                image="/ai.png"
+                description="Familiar with AI/ML workflows using Python, PyTorch/TensorFlow, and LLM ecosystems (Hugging Face and Groq APIs), including model integration."
+                icon={<BrainCircuit className="w-5 h-5" />}
               />
               <SkillHoverCard
                 title=".NET & REST APIs"
-                description="Experienced in .NET/C# and building RESTful APIs with strong backend skills"
-                image="/rest.jpg"
+                description="Experienced with .NET/C# and building RESTful APIs, alongside JavaScript/TypeScript, React, and Node.js for full-stack development."
+                icon={<Server className="w-5 h-5" />}
               />
               <SkillHoverCard
                 title="Git & DevOps"
-                description="Git/GitHub, Docker, and CI/CD focused on delivering reliable solutions"
-                image="/git.png"
+                description="Proficient with Git/GitHub, Docker, and CI/CD pipelines. Comfortable with SQL/NoSQL databases including Supabase and MongoDB."
+                icon={<GitBranch className="w-5 h-5" />}
               />
             </div>
           </div>
