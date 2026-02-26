@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { useAnimate, useInView } from "framer-motion";
 import { useRef, useCallback } from "react";
-import { TextScramble } from '../components/ui/text-scramble';
+import { MatrixText } from '../components/ui/matrix-text';
 
 interface Skill {
   name: string;
@@ -223,9 +223,7 @@ export default function Skills() {
     <section className="w-full bg-skills-bg py-24 px-4 sm:px-6 lg:px-8">
       <div className="mx-auto max-w-7xl">
         <div ref={headingRef}>
-          <TextScramble as="h2" className="font-orbitron mb-8 text-center font-skill-title text-4xl font-semibold text-skills-title md:text-5xl" trigger={isInView}>
-            Tech Stack
-          </TextScramble>
+          <MatrixText text="Tech Stack" className="font-orbitron mb-8 text-center font-skill-title text-4xl font-semibold text-skills-title md:text-5xl" trigger={isInView} />
         </div>
 
         <div className="w-full">

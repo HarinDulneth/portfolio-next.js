@@ -7,7 +7,7 @@ import { Lens } from "@/app/components/ui/lens";
 import { Bot, BrainCircuit, Server, GitBranch } from "lucide-react";
 import InteractiveShader from "@/app/components/ui/crystal-shader";
 import { SkillHoverCard } from "@/app/components/ui/skill-hover-card";
-import { MatrixText } from "@/app/components/ui/matrix-text";
+import { TextScramble } from "@/app/components/ui/text-scramble";
 
 export default function About() {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -38,7 +38,7 @@ export default function About() {
     <div className="min-h-screen flex flex-col items-center bg-black py-16 px-4 sm:px-8">
       {/* Heading */}
       <div ref={headingRef}>
-        <MatrixText text="About Me" className="font-orbitron text-white text-4xl sm:text-5xl md:text-5xl font-bold mb-15 tracking-wide pb-15" trigger={isHeadingInView} />
+        <TextScramble as="h2" className="font-orbitron text-white text-4xl sm:text-5xl md:text-5xl font-bold mb-15 tracking-wide pb-15" trigger={isHeadingInView}>About Me</TextScramble>
       </div>
 
       {/* Main layout wrapper */}

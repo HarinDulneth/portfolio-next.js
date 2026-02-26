@@ -111,7 +111,7 @@ export default function ProjectCard({
 
           {/* Image (for featured card) */}
           {featured && imageSrc && (
-            <div className="flex-shrink-0 w-full md:w-[340px] lg:w-[400px] rounded-xl overflow-hidden">
+            <div className="flex-shrink-0 w-full md:w-[340px] lg:w-[400px] rounded-xl overflow-hidden mb-5">
               <Image
                 src={imageSrc}
                 alt={title}
