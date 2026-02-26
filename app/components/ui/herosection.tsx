@@ -8,7 +8,7 @@ export default function HeroSection() {
     <div className="flex justify-center items-center relative lg:mt-55 mt-50 my-20 z-10 overflow-hidden min-h-[60vh]">
       <div className="max-w-[89vw] lg:max-w-full xl:max-w-[90vw] flex flex-col items-center justify-center text-center">
         <div className="relative text-center md:tracking-wider mb-5 w-full flex items-center justify-center">
-          <div className="max-w-fit min-w-0">
+          <div className="max-w-5xl min-w-0">
             <GradientTextGenerateEffect
               words="Transforming Concepts into seamless Experiences"
               colors={["#280045, #DBB2F8, #280045, #DBB2F8"]}

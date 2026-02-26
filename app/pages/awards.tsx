@@ -20,7 +20,7 @@ export default function Awards() {
                     <TextShimmer
                         as="p"
                         className="mx-auto block whitespace-pre-line text-center"
-                        duration={2}
+                        duration={5}
                         spread={2}
                     >
                         {"A collection of competitions, hackathons, and achievements\nthat highlight teamwork, problem-solving, and continuous growth."}
