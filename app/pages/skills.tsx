@@ -1,8 +1,9 @@
 "use client";
 
 import Image from "next/image";
-import { useAnimate } from "framer-motion";
+import { useAnimate, useInView } from "framer-motion";
 import { useRef, useCallback } from "react";
+import { TextScramble } from '../components/ui/text-scramble';
 
 interface Skill {
   name: string;
@@ -215,12 +216,17 @@ export default function Skills() {
         skill.name !== "AWS"
     );
 
+  const headingRef = useRef(null)
+  const isInView = useInView(headingRef, { amount: 0.5 })
+
   return (
     <section className="w-full bg-skills-bg py-24 px-4 sm:px-6 lg:px-8">
       <div className="mx-auto max-w-7xl">
-        <h2 className="font-orbitron mb-8 text-center font-skill-title text-4xl font-semibold text-skills-title md:text-5xl">
-          Tech Stack
-        </h2>
+        <div ref={headingRef}>
+          <TextScramble as="h2" className="font-orbitron mb-8 text-center font-skill-title text-4xl font-semibold text-skills-title md:text-5xl" trigger={isInView}>
+            Tech Stack
+          </TextScramble>
+        </div>
 
         <div className="w-full">
           <div className="flex flex-col rounded-3xl bg-skills-card py-10 md:py-12 lg:py-14 px-3 sm:px-4 md:px-6 lg:px-8 shadow-skill-card min-h-[480px]">

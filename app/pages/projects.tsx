@@ -1,6 +1,9 @@
 "use client";
 
+import { useRef } from "react";
+import { useInView } from "framer-motion";
 import ProjectCard from "../components/ui/project-card";
+import { MatrixText } from "../components/ui/matrix-text";
 
 const sampleDescription1 = [
   "The Bus Tracking System is a responsive web app that helps commuters see live bus locations, routes, and ETA information in a clear, map‑based interface. It aims to reduce uncertainty around arrival times and make daily travel planning smoother on both desktop and mobile.",
@@ -67,13 +70,14 @@ const projects = [
 ];
 
 export default function Projects() {
+  const headingRef = useRef(null)
+  const isInView = useInView(headingRef, { amount: 0.5 })
+
   return (
     <div className="w-full bg-white py-20 px-4 sm:px-6 lg:px-8">
       {/* Title */}
-      <div className="flex justify-center mb-12">
-        <h2 className="font-orbitron text-4xl md:text-5xl font-semibold text-black">
-          Projects
-        </h2>
+      <div ref={headingRef} className="flex justify-center mb-12">
+        <MatrixText text="Projects" className="font-orbitron text-4xl md:text-5xl font-semibold text-black" trigger={isInView} />
       </div>
 
       {/* Projects container */}

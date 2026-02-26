@@ -1,98 +1,144 @@
+"use client"
+import { useRef } from 'react'
+import { useInView } from 'framer-motion'
 import { Card, CardContent, CardHeader } from '../components/ui/card-ach'
 import { Avatar, AvatarFallback, AvatarImage } from '../components/ui/avatar'
+import { TextScramble } from '../components/ui/text-scramble'
+import { TextShimmer } from '../components/ui/text-shimmer'
 
 export default function Awards() {
+    const headingRef = useRef(null)
+    const isInView = useInView(headingRef, { amount: 0.5 })
+
     return (
-        <section className="h-[100vh] py-26 md:py-42">
+        <section className="h-[100vh] py-20 md:py-40">
             <div className="mx-auto max-w-6xl space-y-8 px-6 md:space-y-16">
-                <div className="relative z-10 mx-auto max-w-xl space-y-6 text-center md:space-y-12">
-                    <h2 className="text-4xl font-medium lg:text-5xl">Build by makers, loved by thousand developers</h2>
-                    <p>Gemini is evolving to be more than just the models. It supports an entire to the APIs and platforms helping developers and businesses innovate.</p>
+                <div className="relative z-10 mx-auto max-w-4xl space-y-5 text-center md:space-y-10">
+                    <div ref={headingRef}>
+                        <TextScramble as="h2" className="text-4xl font-medium lg:text-5xl font-orbitron" trigger={isInView}>Awards and Winnings</TextScramble>
+                    </div>
+                    <TextShimmer
+                        as="p"
+                        className="mx-auto block whitespace-pre-line text-center"
+                        duration={2}
+                        spread={2}
+                    >
+                        {"A collection of competitions, hackathons, and achievements\nthat highlight teamwork, problem-solving, and continuous growth."}
+                    </TextShimmer>
                 </div>
 
                 <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-4 lg:grid-rows-2">
-                    <div className="gradient-card p-[2px] sm:col-span-2 lg:row-span-2">
-                    <Card className="grid grid-rows-[auto_1fr] gap-8 sm:p-6 h-full" style={{ background: "radial-gradient(120% 120% at 30% 10%, #1a1a1a 0%, #0f0f10 60%, #0b0b0c 100%)" }}>
+                    <div className="gradient-card p-[2px] sm:col-span-2 lg:row-span-2 group">
+                    <Card className="grid grid-rows-[auto_1fr] gap-3 sm:p-6 h-full" style={{ background: "radial-gradient(120% 120% at 30% 10%, #1a1a1a 0%, #0f0f10 60%, #0b0b0c 100%)" }}>
                         <CardHeader>
-                            <img
-                                className="h-6 w-fit dark:invert"
-                                src="https://html.tailus.io/blocks/customers/nike.svg"
-                                alt="Nike Logo"
-                                height="24"
-                                width="auto"
-                            />
+                            <h3 className="text-xl font-medium text-white">🏆 Champions — Kelani Xtreme</h3>
                         </CardHeader>
                         <CardContent>
-                            <blockquote className="grid h-full grid-rows-[1fr_auto] gap-6">
-                                <p className="text-xl font-medium">Tailus has transformed the way I develop web applications. Their extensive collection of UI components, blocks, and templates has significantly accelerated my workflow. The flexibility to customize every aspect allows me to create unique user experiences. Tailus is a game-changer for modern web development</p>
+                            <blockquote className="grid h-full grid-rows-[auto_1fr_auto] gap-6">
+                                <img
+                                    className="w-full rounded-xl object-cover max-h-64 transition-transform duration-300 group-hover:scale-105 "
+                                    src="/IMG-20251022-WA0000.jpg"
+                                    alt="Kelani Xtreme Hackathon Winners"
+                                />
+                                <p className="text-md font-medium">Led the team to secure 1st Place at Kelani Xtreme — a 5-hour Hackathon organized by IEEE Student Branch of University of Kelaniya. An intense and rewarding experience of brainstorming, coding, and rapid problem-solving under pressure.</p>
 
                                 <div className="grid grid-cols-[auto_1fr] items-center gap-3">
                                     <Avatar className="size-12">
                                         <AvatarImage
-                                            src="https://tailus.io/images/reviews/shekinah.webp"
-                                            alt="Shekinah Tshiokufila"
+                                            src="/image.png"
+                                            alt="IEEE Student Branch"
                                             height="400"
                                             width="400"
                                             loading="lazy"
                                         />
-                                        <AvatarFallback>ST</AvatarFallback>
+                                        <AvatarFallback>IE</AvatarFallback>
                                     </Avatar>
 
                                     <div>
-                                        <cite className="text-sm font-medium">Shekinah Tshiokufila</cite>
-                                        <span className="text-gray-400 block text-sm">Software Ingineer</span>
+                                        <cite className="text-sm font-medium text-gray-400">IEEE Student Branch of University of Kelaniya</cite>
+                                        <a
+                                            href="https://www.linkedin.com/posts/harin-dulneth-1b8455352_kelanixtreme-programmingcompetition-ieee-activity-7385370553915969536-VNoj?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFf8x9wBHMeYKNE2KP6ojgr1V-VwQenN5vo"
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="text-[#9100FF] block text-sm hover:animate-glitch-color"
+                                        >
+                                            View Certificate ↗
+                                        </a>
                                     </div>
                                 </div>
                             </blockquote>
                         </CardContent>
                     </Card>
                     </div>
-                    <div className="gradient-card p-[2px] md:col-span-2">
+                    <div className="gradient-card p-[2px] md:col-span-2 group">
                     <Card className="h-full" style={{ background: "radial-gradient(120% 120% at 70% 10%, #1a1a1a 0%, #0f0f10 60%, #0b0b0c 100%)" }}>
                         <CardContent className="h-full pt-6">
-                            <blockquote className="grid h-full grid-rows-[1fr_auto] gap-6">
-                                <p className="text-xl font-medium">Tailus is really extraordinary and very practical, no need to break your head. A real gold mine.</p>
+                            <div className="grid grid-cols-[1fr_auto] h-full gap-4">
+                                <blockquote className="grid h-full grid-rows-[auto_1fr_auto] gap-4">
+                                    <h3 className="text-xl font-medium text-white">📄 Nexus – FCTSRS 2025</h3>
+                                    <p className="text-sm font-medium">Presented "Nexus" — a centralized project management platform at FCTSRS 2025, University of Kelaniya.</p>
 
-                                <div className="grid grid-cols-[auto_1fr] items-center gap-3">
-                                    <Avatar className="size-12">
-                                        <AvatarImage
-                                            src="https://tailus.io/images/reviews/jonathan.webp"
-                                            alt="Jonathan Yombo"
-                                            height="400"
-                                            width="400"
-                                            loading="lazy"
-                                        />
-                                        <AvatarFallback>JY</AvatarFallback>
-                                    </Avatar>
-                                    <div>
-                                        <cite className="text-sm font-medium">Jonathan Yombo</cite>
-                                        <span className="text-gray-400 block text-sm">Software Ingineer</span>
+                                    <div className="grid grid-cols-[auto_1fr] items-center gap-3">
+                                        <Avatar className="size-12">
+                                            <AvatarImage
+                                                src="/307383143_629957038918421_2997862064393786701_n.jpg"
+                                                alt="Faculty of Computing and Technology"
+                                                height="400"
+                                                width="400"
+                                                loading="lazy"
+                                            />
+                                            <AvatarFallback>FC</AvatarFallback>
+                                        </Avatar>
+                                        <div>
+                                            <cite className="text-sm font-medium text-gray-400">Faculty of Computing and Technology</cite>
+                                            <a
+                                                href="https://www.linkedin.com/posts/harin-dulneth-1b8455352_fctsrs2025-universityofkelaniya-research-activity-7387117470098141184-69Rl?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFf8x9wBHMeYKNE2KP6ojgr1V-VwQenN5vo"
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                className="text-[#9100FF] block text-sm hover:animate-glitch-color"
+                                            >
+                                                View Certificate ↗
+                                            </a>
+                                        </div>
                                     </div>
-                                </div>
-                            </blockquote>
+                                </blockquote>
+                                <img
+                                    className="w-44 h-full rounded-xl object-cover object-[70%] transition-transform duration-300 group-hover:scale-105"
+                                    src="/1761225956269.jpg"
+                                    alt="FCTSRS 2025 Presentation"
+                                />
+                            </div>
                         </CardContent>
                     </Card>
                     </div>
                     <div className="gradient-card p-[2px]">
                     <Card className="h-full" style={{ background: "radial-gradient(120% 120% at 50% 50%, #1a1a1a 0%, #0f0f10 60%, #0b0b0c 100%)" }}>
                         <CardContent className="h-full pt-6">
-                            <blockquote className="grid h-full grid-rows-[1fr_auto] gap-6">
-                                <p>Great work on tailfolio template. This is one of the best personal website that I have seen so far!</p>
+                            <blockquote className="grid h-full grid-rows-[auto_1fr_auto] gap-4">
+                                <h3 className="text-lg font-medium text-white">Stage 01 – Xcelerate SpiritX 2025</h3>
+                                <p className="text-sm">Led Team Telusko in Stage 01 Xcelerate of SpiritX 2025 — an inter-university development competition filled with intensity, creativity, and true teamwork.</p>
 
                                 <div className="grid items-center gap-3 [grid-template-columns:auto_1fr]">
                                     <Avatar className="size-12">
                                         <AvatarImage
-                                            src="https://tailus.io/images/reviews/yucel.webp"
-                                            alt="Yucel Faruksahan"
+                                            src="/moraspirit.png"
+                                            alt="MoraSpirit 360"
                                             height="400"
                                             width="400"
                                             loading="lazy"
                                         />
-                                        <AvatarFallback>YF</AvatarFallback>
+                                        <AvatarFallback>MS</AvatarFallback>
                                     </Avatar>
                                     <div>
-                                        <cite className="text-sm font-medium">Yucel Faruksahan</cite>
-                                        <span className="text-gray-400 block text-sm">Creator, Tailkits</span>
+                                        <cite className="text-sm font-medium text-gray-400">MoraSpirit 360</cite>
+                                        <a
+                                            href="https://www.linkedin.com/posts/harin-dulneth-1b8455352_spiritx2025-xcelerate-teamtelusko-activity-7381208988702650368-XYD_?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFf8x9wBHMeYKNE2KP6ojgr1V-VwQenN5vo"
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="text-[#9100FF] block text-sm hover:animate-glitch-color"
+                                        >
+                                            View Certificate ↗
+                                        </a>
                                     </div>
                                 </div>
                             </blockquote>
@@ -102,23 +148,31 @@ export default function Awards() {
                     <div className="gradient-card p-[2px]">
                     <Card className="h-full" style={{ background: "radial-gradient(120% 120% at 50% 50%, #1a1a1a 0%, #0f0f10 60%, #0b0b0c 100%)" }}>
                         <CardContent className="h-full pt-6">
-                            <blockquote className="grid h-full grid-rows-[1fr_auto] gap-6">
-                                <p>Great work on tailfolio template. This is one of the best personal website that I have seen so far!</p>
+                            <blockquote className="grid h-full grid-rows-[auto_1fr_auto] gap-4">
+                                <h3 className="text-lg font-medium text-white">IX'25 – Designathon</h3>
+                                <p className="text-sm">Secured a top 20 placement at IX&apos;25 Designathon – our first designathon experience, exploring ideas and pushing creative boundaries as a team.</p>
 
                                 <div className="grid grid-cols-[auto_1fr] gap-3">
                                     <Avatar className="size-12">
                                         <AvatarImage
-                                            src="https://tailus.io/images/reviews/rodrigo.webp"
-                                            alt="Rodrigo Aguilar"
+                                            src="/ieee-iit.png"
+                                            alt="IEEE Student Branch of IIT"
                                             height="400"
                                             width="400"
                                             loading="lazy"
                                         />
-                                        <AvatarFallback>YF</AvatarFallback>
+                                        <AvatarFallback>IE</AvatarFallback>
                                     </Avatar>
                                     <div>
-                                        <p className="text-sm font-medium">Rodrigo Aguilar</p>
-                                        <span className="text-gray-400 block text-sm">Creator, TailwindAwesome</span>
+                                        <cite className="text-sm font-medium text-gray-400">IEEE Student Branch of IIT Sri Lanka</cite>
+                                        <a
+                                            href="https://www.linkedin.com/posts/harin-dulneth-1b8455352_designathon-ix25-firstdesignathon-activity-7412934376746979328-Ki-X?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFf8x9wBHMeYKNE2KP6ojgr1V-VwQenN5vo"
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="text-[#9100FF] block text-sm hover:animate-glitch-color"
+                                        >
+                                            View Certificate ↗
+                                        </a>
                                     </div>
                                 </div>
                             </blockquote>

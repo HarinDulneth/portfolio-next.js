@@ -1,17 +1,21 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { useInView } from "framer-motion";
 import Image from "next/image";
 import { Lens } from "@/app/components/ui/lens";
 import { Bot, BrainCircuit, Server, GitBranch } from "lucide-react";
 import InteractiveShader from "@/app/components/ui/crystal-shader";
 import { SkillHoverCard } from "@/app/components/ui/skill-hover-card";
+import { MatrixText } from "@/app/components/ui/matrix-text";
 
 export default function About() {
   const sectionRef = useRef<HTMLDivElement>(null);
   const [isVisible, setIsVisible] = useState(false);
   const [hovering, setHovering] = useState(false);
   const [cardHovered, setCardHovered] = useState(false);
+  const headingRef = useRef(null);
+  const isHeadingInView = useInView(headingRef, { amount: 0.5 });
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -33,9 +37,9 @@ export default function About() {
   return (
     <div className="min-h-screen flex flex-col items-center bg-black py-16 px-4 sm:px-8">
       {/* Heading */}
-      <h2 className="font-orbitron text-white text-4xl sm:text-5xl md:text-5xl font-bold mb-15 tracking-wide pb-15">
-        About Me
-      </h2>
+      <div ref={headingRef}>
+        <MatrixText text="About Me" className="font-orbitron text-white text-4xl sm:text-5xl md:text-5xl font-bold mb-15 tracking-wide pb-15" trigger={isHeadingInView} />
+      </div>
 
       {/* Main layout wrapper */}
       <div

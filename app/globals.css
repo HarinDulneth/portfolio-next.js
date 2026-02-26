@@ -254,3 +254,54 @@ body {
   transform: translateX(0);
   opacity: 1;
 }
+
+/* Glitch color flicker */
+@keyframes glitch-color {
+  0% {
+    color: #9100FF;
+  }
+
+  10% {
+    color: #00f0ff;
+  }
+
+  20% {
+    color: #9100FF;
+  }
+
+  30% {
+    color: #ffffff;
+  }
+
+  40% {
+    color: #ff00e6;
+  }
+
+  50% {
+    color: #9100FF;
+  }
+
+  60% {
+    color: #00f0ff;
+  }
+
+  70% {
+    color: #ffffff;
+  }
+
+  80% {
+    color: #ff00e6;
+  }
+
+  90% {
+    color: #00f0ff;
+  }
+
+  100% {
+    color: #9100FF;
+  }
+}
+
+.animate-glitch-color {
+  animation: glitch-color 0.4s steps(1) infinite;
+}
