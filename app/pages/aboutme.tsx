@@ -4,6 +4,8 @@ import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { Lens } from "@/app/components/ui/lens";
 import { Bot } from "lucide-react";
+import InteractiveShader from "@/app/components/ui/crystal-shader";
+import { SkillHoverCard } from "@/app/components/ui/skill-hover-card";
 
 export default function About() {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -73,15 +75,28 @@ export default function About() {
             zIndex: 2,
           }}
         >
-          {/* Card background with radial gradient */}
+          {/* Card background — flat color base */}
           <div
             className="absolute rounded-[28px] shadow-2xl"
             style={{
               top: "-45px",
               left: "247px",
               right: "0",
+              bottom: "-75px",
+              background: "#171717",
+            }}
+          />
+          {/* Radial gradient overlay — fades in on hover */}
+          <div
+            className="absolute rounded-[28px]"
+            style={{
+              top: "-45px",
+              left: "247px",
+              right: "0",
               bottom: "-80px",
               background: "radial-gradient(120% 120% at 30% 10%, #1a1a1a 0%, #0f0f10 60%, #0b0b0c 100%)",
+              opacity: cardHovered ? 1 : 0,
+              transition: "opacity 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94)",
             }}
           />
 
@@ -123,14 +138,21 @@ export default function About() {
               }}
             >
               <div
-                className="group/hello px-8 py-7 sm:px-10 sm:py-8 ml-5 bg-[#0B0C0E] hover:bg-[#3F0D77] transition-colors duration-300 cursor-pointer"
+                className="group/hello relative overflow-hidden px-8 py-7 sm:px-10 sm:py-8 ml-5 bg-black hover:bg-[#3F0D77] transition-colors duration-300 cursor-pointer"
                 style={{
-                  // background: "linear-gradient(135deg, #E6C9FF, #D2CCFF)",
                   borderRadius: "15px 0 0 15px",
                 }}
               >
-                <p className="font-inter text-white group-hover/hello:text-black text-lg sm:text-2xl font-md transition-colors duration-300">
-                  Hello There!
+                <InteractiveShader
+                  cellDensity={1.5}
+                  animationSpeed={0.15}
+                  warpFactor={0.4}
+                  mouseInfluence={0.1}
+                  brightness={0.25}
+                  className="rounded-[15px_0_0_15px]"
+                />
+                <p className="relative z-10 font-inter text-white/85 text-lg sm:text-2xl font-md">
+                  <span className="text-[#9100FF]/85">Hello</span> There!
                 </p>
               </div>
             </div>
@@ -152,45 +174,44 @@ export default function About() {
               }}
             >
               <div
-                className="group/cs pl-15 pr-8 py-7 sm:pl-25 sm:pr-10 sm:py-8 mr-5 bg-[#0B0C0E] hover:bg-[#3F0D77] transition-colors duration-300 cursor-pointer"
+                className="group/cs relative overflow-hidden pl-15 pr-8 py-7 sm:pl-25 sm:pr-10 sm:py-8 mr-5 bg-black hover:bg-[#3F0D77] transition-colors duration-300 cursor-pointer"
                 style={{
-                  // background: "linear-gradient(135deg, #E6C9FF, #D2CCFF)",
                   borderRadius: "0 15px 15px 0",
                 }}
               >
-                <p className="font-inter text-white group-hover/cs:text-black text-base sm:text-lg leading-relaxed transition-colors duration-300">
-                  I am a Computer Science undergraduate with a solid foundation
-                  in full-stack development and a strong interest in AI
-                  developments and applied ML.
+                <InteractiveShader
+                  cellDensity={2}
+                  animationSpeed={0.15}
+                  warpFactor={0.4}
+                  mouseInfluence={0.1}
+                  brightness={0.25}
+                  className="rounded-[0_15px_15px_0]"
+                />
+                <p className="relative z-10 font-inter text-white/85 text-base sm:text-lg">
+                  I am a <span className="text-[#9100FF]/85">Computer Science</span> undergraduate with a solid foundation
+                  in full-stack development and a strong interest in <span className="text-[#9100FF]/85">AI
+                  developments</span> and applied Machine Learning.
                 </p>
               </div>
             </div>
 
-            {/* 
-              Skills detail card:
-              - GAP on LEFT → ml-6
-              - GAP on RIGHT → mr-6
-              - All borders rounded
-            */}
-            <div
-              className="group/skills px-8 py-8 sm:px-10 sm:py-9 mx-15 bg-white/10 hover:bg-[#3F0D77] transition-colors duration-300 cursor-pointer"
-              style={{
-                // background: "linear-gradient(135deg, #E6C9FF, #D2CCFF)",
-                borderRadius: "15px",
-              }}
-            >
-              <p className="font-inter text-white group-hover/skills:text-black text-base sm:text-md leading-relaxed mb-4 transition-colors duration-300">
-                I&apos;m xperienced in .NET/C# and building RESTful APIs, with
-                strong skills in JavaScript/TypeScript, React, and Node.js.
-                Proficient in AI/ML workflows using Python, PyTorch/TensorFlow
-                and modern LLM ecosystems (Hugging Face, Groq APIs), including
-                model integration.
-              </p>
-              <p className="font-inter text-white group-hover/skills:text-black text-base sm:text-md leading-relaxed transition-colors duration-300">
-                I also work with SQL/NoSQL databases (PostgreSQL/Supabase,
-                MongoDB), Git/GitHub, Docker, and CI/CD, focused on delivering
-                reliable, maintainable solutions while continuously learning.
-              </p>
+            {/* Skills cards — 3 horizontal, hover-card style */}
+            <div className="grid grid-cols-3 gap-4 mx-8 h-72 mt-4">
+              <SkillHoverCard
+                title="AI / ML & LLM"
+                description="Proficient in AI/ML workflows using Python, PyTorch & modern LLM ecosystems"
+                image="/ai.png"
+              />
+              <SkillHoverCard
+                title=".NET & REST APIs"
+                description="Experienced in .NET/C# and building RESTful APIs with strong backend skills"
+                image="/rest.jpg"
+              />
+              <SkillHoverCard
+                title="Git & DevOps"
+                description="Git/GitHub, Docker, and CI/CD focused on delivering reliable solutions"
+                image="/git.png"
+              />
             </div>
           </div>
         </div>

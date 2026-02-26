@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@arwes/react-animated": "^1.0.0-next.25020502",
+    "@radix-ui/react-avatar": "^1.1.11",
     "@radix-ui/react-slot": "^1.2.3",
     "@splinetool/react-spline": "^3.1.1",
     "@splinetool/runtime": "^1.10.40",
@@ -20,7 +21,7 @@
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "dotenv": "^17.3.1",
-    "framer-motion": "^12.23.6",
+    "framer-motion": "^12.34.3",
     "gsap": "^3.13.0",
     "lucide-react": "^0.526.0",
     "motion": "^12.23.7",

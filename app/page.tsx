@@ -1,4 +1,5 @@
 import About from "./pages/aboutme";
+import Awards from "./pages/awards";
 import Home from "./pages/home";
 import Projects from "./pages/projects";
 import Skills from "./pages/skills";
@@ -17,6 +18,9 @@ export default function App() {
       </section>
       <section id="projects">
         <Projects />
+      </section>
+      <section id="awards">
+        <Awards />
       </section>
     </div>
   );
