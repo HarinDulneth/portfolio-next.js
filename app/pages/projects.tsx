@@ -12,7 +12,7 @@ const sampleDescription1 = [
 
 const sampleDescription2 = [
   "This portfolio is a modern, interactive web app built to present my skills, projects, and background in a clean, focused way. It features smooth transitions, responsive layouts, and a visually distinct tech‑stack and projects section that work well on both desktop and mobile.",
-  "The site is engineered with reusable components, a consistent design system, and attention to performance and accessibility. Custom UI elements—like the animated backgrounds, interactive skill grid, and 3D‑style project cards—demonstrate my ability to ship polished, production‑ready front‑end experiences.",
+  "The site is engineered with reusable components, a consistent design system, and attention to performance and accessibility. Custom UI elements-like the animated backgrounds, interactive skill grid, and 3D‑style project cards - demonstrate my ability to ship polished, production‑ready front‑end experiences.",
 ];
 
 const sampleDescription3 = [
