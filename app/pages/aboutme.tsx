@@ -136,13 +136,13 @@ export default function About() {
             >
               <div className="gradient-card p-[2px] rounded-2xl">
                 <div
-                  className="group/intro relative overflow-hidden bg-black px-8 py-7 sm:px-10 sm:py-8 transition-colors duration-300 rounded-2xl"
+                  className="group/intro relative overflow-hidden bg-[#0A0A0A] px-8 py-7 sm:px-10 sm:py-8 transition-colors duration-300 rounded-2xl"
                 >
                   <p className="relative z-10 font-inter text-white/85 text-lg sm:text-2xl font-medium">
                     Hello There!
                   </p>
                   <div className="relative z-10 mt-4 mb-5 -mx-8 w-[calc(100%+4rem)] sm:-mx-10 sm:w-[calc(100%+5rem)]">
-                    <div className="h-px bg-white/15 transition-colors duration-300" />
+                    <div className="h-px bg-white/10 transition-colors duration-300" />
                   </div>
                   <p className="relative z-10 font-inter text-white/75 text-base sm:text-lg leading-relaxed">
                     I am a Computer Science undergraduate at University of Kelaniya with a strong interest in AI developments and applied Machine Learning and a solid foundation

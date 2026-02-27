@@ -20,7 +20,7 @@ export function SkillHoverCard({
   return (
     <div
       className={cn(
-        "relative flex flex-col gap-4 p-6 rounded-2xl bg-black overflow-hidden transition-all duration-300 group",
+        "relative flex flex-col gap-4 p-6 rounded-2xl bg-[#0A0A0A] overflow-hidden transition-all duration-300 group",
         className
       )}
     >
