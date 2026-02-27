@@ -32,7 +32,7 @@ const sampleDescription5 = [
 
 const projects = [
   {
-    title: "Trowd — Real-Time Transit Intelligence Platform",
+    title: "Trowd - Real Time Transit Intelligence Platform",
     description: sampleDescription1,
     imageSrc: "/trowd.png",
     sourceUrl: "https://github.com/Crowd-Based-Bus-Tracking-System",
@@ -47,21 +47,21 @@ const projects = [
     featured: false,
   },
   {
-    title: "AcademiTrend — Academic Analytics & Career Prediction Platform",
+    title: "AcademiTrend - Academic Analytics & Career Prediction Platform",
     description: sampleDescription3,
     sourceUrl: "https://github.com/HarinDulneth/Acedemi-Trend-API.git",
     variant: "light" as const,
     featured: false,
   },
   {
-    title: "CodeMart — Digital Project Marketplace",
+    title: "CodeMart - Digital Project Marketplace",
     description: sampleDescription4,
     sourceUrl: "https://github.com/HarinDulneth/CodeMart.git",
     variant: "light" as const,
     featured: false,
   },
   {
-    title: "Nexus — Project Mangement System",
+    title: "Nexus - Project Mangement System",
     description: sampleDescription5,
     sourceUrl: "https://github.com/Nexus-PM-System",
     variant: "light" as const,
