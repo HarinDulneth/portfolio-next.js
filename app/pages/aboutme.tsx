@@ -86,7 +86,7 @@ export default function About() {
               top: "-45px",
               left: "247px",
               right: "0",
-              bottom: "-75px",
+              bottom: "-70px",
               background: "#171717",
             }}
           />
@@ -123,79 +123,32 @@ export default function About() {
             </div>
           </div>
 
-          {/* Right: Content stripes */}
-          <div className="flex flex-col flex-1 mt-5 gap-5 overflow-hidden">
-            {/* 
-              Hello There stripe:
-              - GAP on LEFT (from image) → ml-6
-              - NO GAP on RIGHT (flush to white bg edge) → no mr
-              - Rounded LEFT borders only
-              - Slides right → left
-            */}
+          {/* Right: Single intro box — Hello There + line + I'm a ... */}
+          <div className="flex flex-col flex-1 mt-5 gap-5">
             <div
-              className="ml-10"
+              className="mx-10"
               style={{
-                transform: isVisible ? "translateX(0)" : "translateX(100%)",
+                transform: isVisible ? "translateY(0)" : "translateY(20px)",
                 opacity: isVisible ? 1 : 0,
                 transition:
                   "transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.8s ease",
               }}
             >
-              <div
-                className="group/hello relative overflow-hidden px-8 py-7 sm:px-10 sm:py-8 ml-5 bg-black/50 hover:bg-[#3F0D77] transition-colors duration-300"
-                style={{
-                  borderRadius: "15px 0 0 15px",
-                }}
-              >
-                {/* <InteractiveShader
-                  cellDensity={1.5}
-                  animationSpeed={0.15}
-                  warpFactor={0.4}
-                  mouseInfluence={0.1}
-                  brightness={0.25}
-                  className="rounded-[15px_0_0_15px]"
-                /> */}
-                <p className="relative z-10 font-inter text-white/85 text-lg sm:text-2xl font-md">
-                  <span className="text-white/85 group-hover/hello:text-black transition-colors duration-300">Hello</span> There!
-                </p>
-              </div>
-            </div>
-
-            {/* 
-              CS undergraduate stripe:
-              - NO GAP on LEFT (touches image edge) → no ml
-              - GAP on RIGHT (from white bg edge) → mr-6
-              - Rounded RIGHT borders only
-              - Slides left → right
-            */}
-            <div
-              className="mr-10"
-              style={{
-                transform: isVisible ? "translateX(0)" : "translateX(-100%)",
-                opacity: isVisible ? 1 : 0,
-                transition:
-                  "transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.2s, opacity 0.8s ease 0.2s",
-              }}
-            >
-              <div
-                className="group/cs relative overflow-hidden pl-15 pr-8 py-7 sm:pl-25 sm:pr-10 sm:py-8 mr-5 bg-black/50 hover:bg-[#3F0D77] transition-colors duration-300"
-                style={{
-                  borderRadius: "0 15px 15px 0",
-                }}
-              >
-                {/* <InteractiveShader
-                  cellDensity={2}
-                  animationSpeed={0.15}
-                  warpFactor={0.4}
-                  mouseInfluence={0.1}
-                  brightness={0.25}
-                  className="rounded-[0_15px_15px_0]"
-                /> */}
-                <p className="relative z-10 font-inter text-white/85 text-base sm:text-lg">
-                  I am a <span className="text-white/85 group-hover/cs:text-[#9100FF] transition-colors duration-300">Computer Science</span> undergraduate with a solid foundation
-                  in full-stack development and a strong interest in <span className="text-white/85 group-hover/cs:text-[#9100FF] transition-colors duration-300">AI
-                  developments</span> and applied Machine Learning.
-                </p>
+              <div className="gradient-card p-[2px] rounded-2xl">
+                <div
+                  className="group/intro relative overflow-hidden bg-black px-8 py-7 sm:px-10 sm:py-8 transition-colors duration-300 rounded-2xl"
+                >
+                  <p className="relative z-10 font-inter text-white/85 text-lg sm:text-2xl font-medium">
+                    Hello There!
+                  </p>
+                  <div className="relative z-10 mt-4 mb-5 -mx-8 w-[calc(100%+4rem)] sm:-mx-10 sm:w-[calc(100%+5rem)]">
+                    <div className="h-px bg-white/15 transition-colors duration-300" />
+                  </div>
+                  <p className="relative z-10 font-inter text-white/75 text-base sm:text-lg leading-relaxed">
+                    I am a Computer Science undergraduate at University of Kelaniya with a strong interest in AI developments and applied Machine Learning and a solid foundation
+                    in full-stack development. I truly enjoy teamwork - collaborating to solve complex problems and build innovative solutions.
+                  </p>
+                </div>
               </div>
             </div>
 

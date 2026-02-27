@@ -121,7 +121,7 @@ export default function ChatAssistant(): JSX.Element {
       {/* Floating toggle button */}
       <button
         onClick={() => setOpen((v) => !v)}
-        className="fixed bottom-6 right-6 z-50 w-14 h-14 bg-[#5500AC] rounded-full flex items-center justify-center shadow-lg transition-all duration-300 hover:scale-110 cursor-pointer"
+        className="fixed bottom-6 right-6 z-50 w-14 h-14 bg-[#19003F] border border-[#3D008F] rounded-full flex items-center justify-center shadow-lg transition-all duration-300 hover:scale-110 cursor-pointer"
         style={{
           // background: "linear-gradient(135deg, #7B00E0 0%, #3D0070 100%)",
           // border: "1px solid rgba(219, 178, 248, 0.3)",

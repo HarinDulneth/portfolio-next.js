@@ -60,7 +60,7 @@ export default function Awards() {
                                             href="https://www.linkedin.com/posts/harin-dulneth-1b8455352_kelanixtreme-programmingcompetition-ieee-activity-7385370553915969536-VNoj?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFf8x9wBHMeYKNE2KP6ojgr1V-VwQenN5vo"
                                             target="_blank"
                                             rel="noopener noreferrer"
-                                            className="text-[#9100FF]/85 block text-sm hover:animate-glitch-color"
+                                            className="text-[#9100FF] block text-sm hover:animate-glitch-color"
                                         >
                                             View Certificate ↗
                                         </a>
@@ -95,7 +95,7 @@ export default function Awards() {
                                                 href="https://www.linkedin.com/posts/harin-dulneth-1b8455352_fctsrs2025-universityofkelaniya-research-activity-7387117470098141184-69Rl?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFf8x9wBHMeYKNE2KP6ojgr1V-VwQenN5vo"
                                                 target="_blank"
                                                 rel="noopener noreferrer"
-                                                className="text-[#9100FF]/85 block text-sm hover:animate-glitch-color"
+                                                className="text-[#9100FF] block text-sm hover:animate-glitch-color"
                                             >
                                                 View Certificate ↗
                                             </a>
@@ -135,7 +135,7 @@ export default function Awards() {
                                             href="https://www.linkedin.com/posts/harin-dulneth-1b8455352_spiritx2025-xcelerate-teamtelusko-activity-7381208988702650368-XYD_?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFf8x9wBHMeYKNE2KP6ojgr1V-VwQenN5vo"
                                             target="_blank"
                                             rel="noopener noreferrer"
-                                            className="text-[#9100FF]/85 block text-sm hover:animate-glitch-color"
+                                            className="text-[#9100FF] block text-sm hover:animate-glitch-color"
                                         >
                                             View Certificate ↗
                                         </a>
@@ -169,7 +169,7 @@ export default function Awards() {
                                             href="https://www.linkedin.com/posts/harin-dulneth-1b8455352_designathon-ix25-firstdesignathon-activity-7412934376746979328-Ki-X?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFf8x9wBHMeYKNE2KP6ojgr1V-VwQenN5vo"
                                             target="_blank"
                                             rel="noopener noreferrer"
-                                            className="text-[#9100FF]/85 block text-sm hover:animate-glitch-color"
+                                            className="text-[#9100FF] block text-sm hover:animate-glitch-color"
                                         >
                                             View Certificate ↗
                                         </a>

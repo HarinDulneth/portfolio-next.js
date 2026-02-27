@@ -25,14 +25,14 @@ export function SkillHoverCard({
       )}
     >
       {/* Crystal shader background */}
-      <InteractiveShader
+      {/* <InteractiveShader
         cellDensity={1.5}
         animationSpeed={0.15}
         warpFactor={0.4}
         mouseInfluence={0.1}
         brightness={0.25}
         className="rounded-2xl"
-      />
+      /> */}
 
       {/* Icon container */}
       <div className="relative z-10 w-11 h-11 rounded-xl bg-white/10 flex items-center justify-center text-white/70 group-hover:bg-[#9100FF]/20 group-hover:text-[#9100FF] transition-all duration-300">
