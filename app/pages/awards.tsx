@@ -23,7 +23,7 @@ export default function Awards() {
 
   return (
     <section className="h-[100vh] py-20 md:py-40">
-      <div className="mx-auto max-w-6xl space-y-8 px-6 md:space-y-16">
+      <div className="mx-auto max-w-7xl space-y-8 px-6 md:space-y-16">
         <div className="relative z-10 mx-auto max-w-4xl space-y-5 text-center md:space-y-10">
           <div ref={headingRef}>
             <MatrixText
@@ -113,14 +113,16 @@ export default function Awards() {
               }}
             >
               <CardContent className="h-full pt-6">
-                <div className="grid grid-cols-[1fr_auto] h-full gap-4">
+                <div className="grid grid-cols-[1fr_auto] h-full gap-6">
                   <blockquote className="grid h-full grid-rows-[auto_1fr_auto] gap-4">
                     <h3 className="text-xl font-medium text-white/85">
                       📄 Nexus - FCTSRS 2025
                     </h3>
                     <p className="text-sm font-medium text-white/85">
                       Presented "Nexus" - a centralized project management
-                      platform at FCTSRS 2025, University of Kelaniya.
+                      platform at FCTSRS 2025, University of Kelaniya. Led
+                      backend development while collaborating with my talented
+                      team on innovative solutions.
                     </p>
 
                     <div className="grid grid-cols-[auto_1fr] items-center gap-3">
@@ -239,7 +241,7 @@ export default function Awards() {
                     </Avatar>
                     <div>
                       <cite className="text-sm font-medium text-gray-400">
-                        IEEE Student Branch of IIT Sri Lanka
+                        IEEE Student Branch of IIT
                       </cite>
                       <a
                         href="https://www.linkedin.com/posts/harin-dulneth-1b8455352_designathon-ix25-firstdesignathon-activity-7412934376746979328-Ki-X?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFf8x9wBHMeYKNE2KP6ojgr1V-VwQenN5vo"
