@@ -152,7 +152,7 @@ export default function Awards() {
                     </div>
                   </blockquote>
                   <img
-                    className="w-44 h-full rounded-xl object-cover object-[70%] transition-transform duration-300 group-hover:scale-105 cursor-pointer"
+                    className="w-44 h-full rounded-xl object-cover object-[60%] transition-transform duration-300 group-hover:scale-105 cursor-pointer"
                     src="/1761225956269.jpg"
                     alt="FCTSRS 2025 Presentation"
                     onClick={() => openImageModal("/1761225956269.jpg")}
