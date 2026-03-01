@@ -9,7 +9,10 @@ interface CVButtonProps {
   download?: string;
 }
 
-export const CVButton = ({ href = "/resume.pdf", download = "Harin_Dulneth_CV.pdf" }: CVButtonProps) => {
+export const CVButton = ({
+  href = "/cv.pdf",
+  download = "Harin_Dulneth_CV.pdf",
+}: CVButtonProps) => {
   return (
     <motion.a
       href={href}
@@ -18,17 +21,17 @@ export const CVButton = ({ href = "/resume.pdf", download = "Harin_Dulneth_CV.pd
       animate={{ opacity: 1, y: 0 }}
       whileHover={{ scale: 1.05 }}
       whileTap={{ scale: 0.95 }}
-      transition={{ 
+      transition={{
         duration: 0.5,
         type: "spring",
         stiffness: 260,
-        damping: 20 
+        damping: 20,
       }}
       className="group relative flex items-center gap-2 px-6 py-3 rounded-full bg-black/40 backdrop-blur-md border border-white/10 hover:border-white/30 transition-all duration-300 shadow-2xl"
     >
       {/* Background Glow */}
       <div className="absolute inset-0 rounded-full bg-gradient-to-r from-[#7B2FBE]/10 to-[#9B59B6]/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-      
+
       {/* Inner Glow Border */}
       <div className="absolute -inset-[1px] rounded-full bg-gradient-to-r from-white/10 to-transparent opacity-50" />
 
