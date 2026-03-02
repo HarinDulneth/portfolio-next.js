@@ -20,7 +20,7 @@ function formatMessage(text: string): JSX.Element {
     const formattedParts = parts.map((part, j) => {
       if (part.startsWith("**") && part.endsWith("**")) {
         return (
-          <strong key={j} style={{ color: "#dbb2f8", fontWeight: 600 }}>
+          <strong key={j} style={{ color: "#11001fb0", fontWeight: 600 }}>
             {part.slice(2, -2)}
           </strong>
         );
@@ -33,7 +33,7 @@ function formatMessage(text: string): JSX.Element {
     if (listMatch) {
       elements.push(
         <div key={i} style={{ display: "flex", gap: "6px", marginTop: i > 0 ? "6px" : 0 }}>
-          <span style={{ color: "#9b59b6", fontWeight: 600, flexShrink: 0 }}>{listMatch[1]}.</span>
+          <span style={{ color: "#11001fb0", fontWeight: 600, flexShrink: 0 }}>{listMatch[1]}.</span>
           <span>{formattedParts.slice(1)}</span>
         </div>
       );
@@ -226,7 +226,7 @@ export default function ChatAssistant(): JSX.Element {
           {chat.map((m, i) => (
             <div key={i} className={`flex ${m.role === "user" ? "justify-end" : "justify-start"}`}>
               <div
-                className="max-w-[80%] px-3.5 py-2.5 text-sm leading-relaxed"
+                className="max-w-[92%] break-words px-3.5 py-2.5 text-sm leading-relaxed"
                 style={
                   m.role === "user"
                     ? {
