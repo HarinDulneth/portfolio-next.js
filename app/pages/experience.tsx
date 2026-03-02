@@ -17,17 +17,20 @@ interface ExperienceCardProps {
 
 const ExperienceCard = ({ title, institution, subtitle, logoImg, bgImg }: ExperienceCardProps) => {
   return (
-    <div className="gradient-card p-[2px] h-[350px] md:h-[450px] w-full mb-10 md:mb-0 group/card relative rounded-2xl overflow-hidden">
-      <div className="relative h-full w-full rounded-2xl overflow-hidden group-hover/card:shadow-[0_8px_30px_rgb(0,0,0,0.12)]">
+    <div className="gradient-card p-[2px] h-[350px] md:h-[450px] w-full mb-10 md:mb-0 group/card relative rounded-2xl">
+      <div 
+        className="relative h-full w-full rounded-2xl overflow-hidden group-hover/card:shadow-[0_8px_30px_rgb(0,0,0,0.12)]"
+        style={{ background: "#111111" }}
+      >
         {/* Background Image */}
         <Image 
           src={bgImg} 
           alt={institution} 
           fill 
-          className="object-cover transition-transform duration-500 group-hover/card:scale-105" 
+          className="object-cover transition-transform duration-500 group-hover/card:scale-105 opacity-80" 
         />
         {/* Dark overlay for readability */}
-        <div className="absolute inset-0 bg-black/40 transition-colors duration-300 group-hover/card:bg-black/30" />
+        <div className="absolute inset-0 bg-black/30 transition-colors duration-300 group-hover/card:bg-black/20" />
 
         {/* Content */}
         <div className="absolute inset-0 p-6 md:p-10 flex flex-col justify-between z-10 overflow-hidden">
