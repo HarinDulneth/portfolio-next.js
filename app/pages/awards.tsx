@@ -22,7 +22,7 @@ export default function Awards() {
   };
 
   return (
-    <section className="h-[100vh] py-20 md:py-40">
+    <section className="min-h-screen py-20 md:py-40">
       <div className="mx-auto max-w-7xl space-y-8 px-6 md:space-y-16">
         <div className="relative z-10 mx-auto max-w-4xl space-y-5 text-center md:space-y-10">
           <div ref={headingRef}>
@@ -66,7 +66,7 @@ export default function Awards() {
                     alt="Kelani Xtreme Hackathon Winners"
                     onClick={() => openImageModal("/IMG-20251022-WA0000.jpg")}
                   />
-                  <p className="text-md font-medium text-white/85">
+                  <p className="text-md font-medium text-white/75">
                     Led the team to secure 1st Place at Kelani Xtreme - a 5-hour
                     Hackathon organized by IEEE Student Branch of University of
                     Kelaniya. An intense and rewarding experience of
@@ -94,7 +94,7 @@ export default function Awards() {
                         href="https://www.linkedin.com/posts/harin-dulneth-1b8455352_kelanixtreme-programmingcompetition-ieee-activity-7385370553915969536-VNoj?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFf8x9wBHMeYKNE2KP6ojgr1V-VwQenN5vo"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-[#9100FF]/85 block text-sm hover:animate-glitch-color"
+                        className="text-[#6400DE] block text-sm hover:animate-glitch-color"
                       >
                         View Certificate ↗
                       </a>
@@ -118,7 +118,7 @@ export default function Awards() {
                     <h3 className="text-xl font-medium text-white/85">
                       📄 Nexus - FCTSRS 2025
                     </h3>
-                    <p className="text-sm font-medium text-white/85">
+                    <p className="text-sm font-medium text-white/75">
                       Presented "Nexus" - a centralized project management
                       platform at FCTSRS 2025, University of Kelaniya. Led
                       backend development while collaborating with my talented
@@ -144,7 +144,7 @@ export default function Awards() {
                           href="https://www.linkedin.com/posts/harin-dulneth-1b8455352_fctsrs2025-universityofkelaniya-research-activity-7387117470098141184-69Rl?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFf8x9wBHMeYKNE2KP6ojgr1V-VwQenN5vo"
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="text-[#9100FF]/85 block text-sm hover:animate-glitch-color"
+                          className="text-[#6400DE]/85 block text-sm hover:animate-glitch-color"
                         >
                           View Certificate ↗
                         </a>
@@ -174,7 +174,7 @@ export default function Awards() {
                   <h3 className="text-lg font-medium text-white/85">
                     Stage 01 - Xcelerate SpiritX 2025
                   </h3>
-                  <p className="text-sm text-white/85">
+                  <p className="text-sm text-white/75">
                     Led Team Telusko in Stage 01 Xcelerate of SpiritX 2025 - an
                     inter-university development competition filled with
                     intensity, creativity, and true teamwork.
@@ -199,7 +199,7 @@ export default function Awards() {
                         href="https://www.linkedin.com/posts/harin-dulneth-1b8455352_spiritx2025-xcelerate-teamtelusko-activity-7381208988702650368-XYD_?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFf8x9wBHMeYKNE2KP6ojgr1V-VwQenN5vo"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-[#9100FF]/85 block text-sm hover:animate-glitch-color"
+                        className="text-[#6400DE]/85 block text-sm hover:animate-glitch-color"
                       >
                         View Certificate ↗
                       </a>
@@ -222,7 +222,7 @@ export default function Awards() {
                   <h3 className="text-lg font-medium text-white/85">
                     IX'25 - Designathon
                   </h3>
-                  <p className="text-sm text-white/85">
+                  <p className="text-sm text-white/75">
                     Secured a top 20 placement at IX&apos;25 Designathon - our
                     first designathon experience, exploring ideas and pushing
                     creative boundaries as a team.
@@ -247,7 +247,7 @@ export default function Awards() {
                         href="https://www.linkedin.com/posts/harin-dulneth-1b8455352_designathon-ix25-firstdesignathon-activity-7412934376746979328-Ki-X?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFf8x9wBHMeYKNE2KP6ojgr1V-VwQenN5vo"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-[#9100FF]/85 block text-sm hover:animate-glitch-color"
+                        className="text-[#6400DE]/85 block text-sm hover:animate-glitch-color"
                       >
                         View Certificate ↗
                       </a>
