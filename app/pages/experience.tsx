@@ -84,7 +84,7 @@ export default function Experience() {
       content: (
         <ExperienceCard 
           title="Grade 01 - A/Ls" 
-          institution="Isipathana Collge"
+          institution="Isipathana College"
           subtitle="Colombo 05"
           logoImg="/image copy 2.png"
           bgImg="/image copy 4.png"
@@ -96,7 +96,7 @@ export default function Experience() {
       content: (
         <ExperienceCard 
           title="Bsc. in Computer Science (Hons)" 
-          institution="University of Kelaaniya"
+          institution="University of Kelaniya"
           subtitle="Sri Lanka"
           logoImg="/image copy.png"
           bgImg="/image copy 3.png"

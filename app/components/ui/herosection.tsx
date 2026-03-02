@@ -1,4 +1,3 @@
-import ChatAssistant from "./ChatAssistant";
 import MagicBento from "./glassss-button";
 import GradientTextGenerateEffect from "./gradient-textgenerate";
 import TypewriterText from "./typewriter-text";
@@ -95,8 +94,7 @@ export default function HeroSection() {
             </g>
           </g>
         </svg>
-      </button> */}
-      <ChatAssistant />
+      {/* ... */}
     </div>
   );
 }

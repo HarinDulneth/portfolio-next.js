@@ -1,5 +1,6 @@
 "use client";
 
+import { Bot } from "lucide-react";
 import { useState, useEffect, useRef, JSX } from "react";
 import { v4 as uuid } from "uuid";
 
@@ -60,7 +61,25 @@ export default function ChatAssistant(): JSX.Element {
   const [message, setMessage] = useState("");
   const [sessionId, setSessionId] = useState("");
   const [loading, setLoading] = useState(false);
+  const [isFocused, setIsFocused] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  // Close when clicking outside
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (containerRef.current && !containerRef.current.contains(event.target as Node)) {
+        setOpen(false);
+      }
+    }
+
+    if (open) {
+      document.addEventListener("mousedown", handleClickOutside);
+    }
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [open]);
 
   useEffect(() => {
     const id = localStorage.getItem("sid") ?? uuid();
@@ -116,16 +135,18 @@ export default function ChatAssistant(): JSX.Element {
     }
   };
 
+  const hasMessage = message.trim();
+
   return (
-    <>
+    <div ref={containerRef}>
       {/* Floating toggle button */}
       <button
         onClick={() => setOpen((v) => !v)}
-        className="fixed bottom-6 right-6 z-50 w-14 h-14 bg-[#19003F] border border-[#3D008F] rounded-full flex items-center justify-center shadow-lg transition-all duration-300 hover:scale-110 cursor-pointer"
+        className="fixed bottom-6 right-6 z-[9999] w-14 h-14 bg-[#5B00BD] rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 cursor-pointer"
         style={{
           // background: "linear-gradient(135deg, #7B00E0 0%, #3D0070 100%)",
           // border: "1px solid rgba(219, 178, 248, 0.3)",
-          boxShadow: "0 0 24px rgba(123, 0, 224, 0.4), 0 4px 12px rgba(0,0,0,0.5)",
+          // boxShadow: "0 0 24px rgba(123, 0, 224, 0.4), 0 4px 12px rgba(0,0,0,0.5)",
         }}
         aria-label={open ? "Close chat" : "Open chat"}
       >
@@ -148,35 +169,35 @@ export default function ChatAssistant(): JSX.Element {
 
       {/* Chat panel */}
       <div
-        className="fixed bottom-24 right-6 z-50 flex flex-col overflow-hidden transition-all duration-300 ease-in-out"
+        className="fixed bottom-24 right-6 z-[9999] flex flex-col overflow-hidden transition-all duration-300 ease-in-out"
         style={{
           width: open ? "380px" : "0px",
           height: open ? "480px" : "0px",
           opacity: open ? 1 : 0,
           pointerEvents: open ? "auto" : "none",
           borderRadius: "16px",
-          background: "linear-gradient(160deg, rgba(20, 0, 40, 0.97) 0%, rgba(10, 0, 20, 0.98) 100%)",
-          border: "1px solid rgba(123, 0, 224, 0.35)",
-          boxShadow: "0 0 40px rgba(123, 0, 224, 0.2), 0 8px 32px rgba(0, 0, 0, 0.7)",
+          border: "2px solid transparent",
+          background: "linear-gradient(#FFFFFF, #FFFFFF) padding-box, linear-gradient(135deg, #B8E7FF, #D2CCFF) border-box",
+          boxShadow: "0 0 15px rgba(184, 231, 255, 0.5)",
           backdropFilter: "blur(20px)",
         }}
       >
         {/* Header */}
         <div
           className="flex items-center gap-3 px-5 py-4 shrink-0"
-          style={{ borderBottom: "1px solid rgba(123, 0, 224, 0.25)" }}
+          style={{
+            borderBottom: "1px solid",
+            borderImage: "linear-gradient(to right, #B8E7FF, #D2CCFF) 1"
+          }}
         >
           <div
-            className="w-8 h-8 rounded-full flex items-center justify-center"
-            style={{ background: "linear-gradient(135deg, #7B00E0, #3D0070)" }}
+            className="w-8 h-8 rounded-full flex items-center justify-center bg-[#5B00BD]"
           >
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#F3E5FC" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
-            </svg>
+            <Bot className="inline h-3.5 w-3.5" />
           </div>
           <div>
-            <p className="text-sm font-semibold" style={{ color: "#F3E5FC" }}>AI Assistant</p>
-            <p className="text-xs" style={{ color: "rgba(219, 178, 248, 0.5)" }}>Ask me anything about Harin</p>
+            <p className="text-sm font-semibold text-black/75">AI Assistant</p>
+            <p className="text-xs text-black/75">Ask me anything about Harin</p>
           </div>
         </div>
 
@@ -184,19 +205,19 @@ export default function ChatAssistant(): JSX.Element {
         <div
           ref={scrollRef}
           className="flex-1 overflow-y-auto px-4 py-3 space-y-3"
-          style={{ scrollbarWidth: "thin", scrollbarColor: "rgba(123,0,224,0.3) transparent" }}
+          style={{ scrollbarWidth: "thin", scrollbarColor: "rgba(50, 50, 50, 0.3) transparent" }}
         >
           {chat.length === 0 && (
             <div className="flex flex-col items-center justify-center h-full text-center px-4">
               <div
                 className="w-14 h-14 rounded-full flex items-center justify-center mb-4"
-                style={{ background: "rgba(123, 0, 224, 0.15)", border: "1px solid rgba(123, 0, 224, 0.3)" }}
+                style={{ background: "linear-gradient(135deg, #B8E7FF, #D2CCFF)" }}
               >
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="rgba(219,178,248,0.6)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="rgba(0, 0, 0, 0.5)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
                 </svg>
               </div>
-              <p className="text-sm" style={{ color: "rgba(219, 178, 248, 0.5)" }}>
+              <p className="text-sm text-black/75">
                 Start a conversation...
               </p>
             </div>
@@ -209,15 +230,14 @@ export default function ChatAssistant(): JSX.Element {
                 style={
                   m.role === "user"
                     ? {
-                        background: "linear-gradient(135deg, #7B00E0, #5500A0)",
-                        color: "#F3E5FC",
+                        background: "#ebedffff",
+                        color: "#000000c0",
                         borderRadius: "14px 14px 4px 14px",
                       }
                     : {
-                        background: "rgba(255, 255, 255, 0.06)",
-                        color: "rgba(243, 229, 252, 0.85)",
+                        background: "#F3F3F6",
+                        color: "#000000c0",
                         borderRadius: "14px 14px 14px 4px",
-                        border: "1px solid rgba(123, 0, 224, 0.15)",
                       }
                 }
               >
@@ -238,14 +258,17 @@ export default function ChatAssistant(): JSX.Element {
         {/* Input */}
         <div
           className="px-4 py-3 shrink-0"
-          style={{ borderTop: "1px solid rgba(123, 0, 224, 0.2)" }}
+          style={{ borderTop: "1px solid rgba(50, 50, 50, 0.2)" }}
         >
           <div
             className="flex items-center gap-2 px-3 py-2"
             style={{
               borderRadius: "12px",
-              background: "rgba(255, 255, 255, 0.05)",
-              border: "1px solid rgba(123, 0, 224, 0.2)",
+              background: isFocused 
+                ? "linear-gradient(#f9f9fb, #f9f9fb) padding-box, linear-gradient(to right, #B8E7FF, #D2CCFF) border-box" 
+                : "rgba(255, 255, 255, 0.05)",
+              border: isFocused ? "1px solid transparent" : "1px solid rgba(50, 50, 50, 0.2)",
+              transition: "all 0.3s ease",
             }}
           >
             <input
@@ -254,18 +277,30 @@ export default function ChatAssistant(): JSX.Element {
               onKeyDown={handleKeyDown}
               placeholder="Type a message..."
               disabled={loading}
-              className="flex-1 bg-transparent text-sm outline-none placeholder:text-purple-300/30"
-              style={{ color: "#F3E5FC" }}
+              onFocus={() => setIsFocused(true)}
+              onBlur={() => setIsFocused(false)}
+              className="flex-1 bg-transparent text-black text-sm outline-none placeholder:text-black/40"
             />
             <button
               onClick={sendMessage}
-              disabled={loading || !message.trim()}
-              className="w-8 h-8 rounded-full flex items-center justify-center shrink-0 transition-all duration-200 cursor-pointer disabled:opacity-30 disabled:cursor-not-allowed hover:scale-110"
+              disabled={loading || !hasMessage}
+              className="w-8 h-8 rounded-full flex items-center justify-center shrink-0 transition-all duration-200 ease-in-out cursor-pointer disabled:opacity-30 disabled:cursor-not-allowed hover:scale-110"
               style={{
-                background: message.trim() ? "linear-gradient(135deg, #7B00E0, #3D0070)" : "rgba(123,0,224,0.2)",
+                background: hasMessage
+                  ? "#5B00BD"
+                  : "rgba(50, 50, 50, 0.2)"
               }}
             >
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#F3E5FC" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+              <svg
+                width="15"
+                height="15"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke={hasMessage ? "#ffffff" : "#000000"}
+                strokeWidth="2.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
                 <line x1="22" y1="2" x2="11" y2="13" />
                 <polygon points="22 2 15 22 11 13 2 9 22 2" />
               </svg>
@@ -273,6 +308,6 @@ export default function ChatAssistant(): JSX.Element {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 }

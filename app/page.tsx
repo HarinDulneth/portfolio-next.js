@@ -5,6 +5,7 @@ import FooterPage from "./pages/footer";
 import Home from "./pages/home";
 import Projects from "./pages/projects";
 import Skills from "./pages/skills";
+import ChatAssistant from "./components/ui/ChatAssistant";
 
 export default function App() {
   return (
@@ -30,6 +31,7 @@ export default function App() {
       <section id="footer">
         <FooterPage />
       </section>
+      <ChatAssistant />
     </div>
   );
 }
