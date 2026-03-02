@@ -35,7 +35,11 @@ const useLoadAnimation = (duration: number = 5000, delay: number = 500) => {
 };
 
 // Animated Signature Component
-const AnimatedSignature: React.FC = () => {
+interface AnimatedSignatureProps {
+  isLight?: boolean;
+}
+
+const AnimatedSignature: React.FC<AnimatedSignatureProps> = ({ isLight = false }) => {
   const svgRef = useRef<SVGSVGElement>(null);
   const animationProgress = useLoadAnimation(5000, 500); // 2s duration, 0.5s delay
 
@@ -63,7 +67,7 @@ const AnimatedSignature: React.FC = () => {
   return (
     <Link
       href="/"
-      className="text-white hover:text-gray-300 transition-colors duration-200"
+      className={`${isLight ? 'text-black hover:text-gray-700' : 'text-white hover:text-gray-300'} transition-colors duration-200`}
     >
       <div
         className="relative"
@@ -78,8 +82,9 @@ const AnimatedSignature: React.FC = () => {
           height="45"
           viewBox="0 0 123 65"
           style={{
-            filter:
-              "brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(7500%) hue-rotate(0deg) brightness(100%) contrast(100%)",
+            filter: isLight 
+              ? "none" 
+              : "brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(7500%) hue-rotate(0deg) brightness(100%) contrast(100%)",
           }}
         >
           {/* Your actual signature paths as filled paths */}

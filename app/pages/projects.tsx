@@ -74,7 +74,7 @@ export default function Projects() {
   const isInView = useInView(headingRef, { amount: 0.5 })
 
   return (
-    <div className="w-full bg-white py-20 px-4 sm:px-6 lg:px-8">
+    <div data-theme="light" className="w-full bg-white py-20 px-4 sm:px-6 lg:px-8">
       {/* Title */}
       <div ref={headingRef} className="flex justify-center mb-12">
         <TextScramble as="h2" className="font-orbitron text-4xl md:text-5xl font-semibold text-black" trigger={isInView}>Projects</TextScramble>

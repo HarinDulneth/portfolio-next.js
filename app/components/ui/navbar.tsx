@@ -162,44 +162,85 @@ import AnimatedSVGLogo from "./draw-text";
 
 const Navbar: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isLightBg, setIsLightBg] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState("home");
   const pathname = usePathname();
 
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
+
+      // Check for light background sections
+      const lightSections = document.querySelectorAll('[data-theme="light"]');
+      let overLight = false;
+      const navElement = document.getElementById('navbar-container');
+      
+      if (navElement) {
+        const navRect = navElement.getBoundingClientRect();
+        const navCenter = navRect.top + (navRect.height / 2);
+        
+        lightSections.forEach((section) => {
+          const rect = section.getBoundingClientRect();
+          // Adding a small tolerance
+          if (navCenter >= rect.top && navCenter <= rect.bottom) {
+            overLight = true;
+          }
+        });
+      }
+      setIsLightBg(overLight);
     };
 
     window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    handleScroll(); // Initial check
+    // Intersecion Observer for active section
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActiveSection(entry.target.id);
+          }
+        });
+      },
+      { rootMargin: "-40% 0px -40% 0px" } // trigger when section is in the middle of screen
+    );
+
+    const sections = document.querySelectorAll("section");
+    sections.forEach((section) => observer.observe(section));
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      sections.forEach((section) => observer.unobserve(section));
+    };
   }, []);
 
   const navItems = [
-    { href: "/", label: "Home" },
-    // { href: "/reviews", label: "Reviews" },
-    { href: "/Skills", label: "Skills" },
-    { href: "/projects", label: "Projects" },
-    { href: "/about", label: "About" },
+    { href: "#home", label: "Home", id: "home" },
+    { href: "#aboutme", label: "About", id: "aboutme" },
+    { href: "#skills", label: "Skills", id: "skills" },
+    { href: "#projects", label: "Projects", id: "projects" },
+    { href: "#awards", label: "Awards", id: "awards" },
+    { href: "#experience", label: "Experience", id: "experience" },
   ];
 
-  const isActive = (href: string): boolean => {
-    if (href === "/") {
-      return pathname === "/";
-    }
-    return pathname.startsWith(href);
+  const isActive = (id: string): boolean => {
+    return activeSection === id;
   };
 
   return (
     <div className="fixed top-2 sm:top-3 md:top-5 left-2 sm:left-4 md:left-8 lg:left-20 right-2 sm:right-4 md:right-8 lg:right-20 z-50">
       {/* Single Unified Navigation Bar */}
       <nav
-        className={`transition-all duration-300 shadow-2xl shadow-black/20 overflow-hidden bg-white/3 backdrop-blur-xl rounded-xl md:rounded-full`}
+        id="navbar-container"
+        className={`transition-all duration-300 shadow-2xl shadow-black/20 overflow-hidden backdrop-blur-xl rounded-xl md:rounded-full ${
+          isLightBg ? "bg-black/5 border-none" : "bg-white/3"
+        }`}
       >
         {/* Desktop Navigation */}
         <div className="hidden md:flex items-center justify-between px-4 py-2">
           {/* Left: Animated Signature */}
           <div className="flex-shrink-0">
-            <AnimatedSignature />
+            <AnimatedSignature isLight={isLightBg} />
           </div>
           {/* <div className="flex-shrink-0">
             <AnimatedSVGLogo 
@@ -217,8 +258,14 @@ const Navbar: React.FC = () => {
               <Link
                 key={item.href}
                 href={item.href}
-                className={`hover:text-white px-4 py-2 rounded-full text-sm font-orbitron tracking-wider transition-none hover:rounded-none hover:border-b-2 ${
-                  isActive(item.href) ? "text-white" : "text-white/75"
+                onClick={(e) => {
+                  e.preventDefault();
+                  document.getElementById(item.id)?.scrollIntoView({ behavior: 'smooth' });
+                }}
+                className={`px-4 py-2 rounded-full text-sm font-orbitron tracking-wider transition-none hover:rounded-none hover:border-b-2 ${
+                  isLightBg 
+                    ? `hover:text-black hover:border-black ${isActive(item.id) ? "text-black border-black" : "text-black/70"}`
+                    : `hover:text-white hover:border-white ${isActive(item.id) ? "text-white border-white" : "text-white/75"}`
                 }`}
               >
                 {item.label}
@@ -242,10 +289,16 @@ const Navbar: React.FC = () => {
               </Link>
             ))} */}
             <Link
-              href="/contact"
-              className={`px-6 py-3 font-orbitron tracking-wider rounded-full text-md font-medium bg-transparent hover:scale-105 hover:bg-white hover:text-black dark:text-white/75 transition duration-200 ${
-                isActive("/contact") ? "text-white font-semibold" : ""
-              }`}
+              href="#footer"
+              onClick={(e) => {
+                e.preventDefault();
+                document.getElementById('footer')?.scrollIntoView({ behavior: 'smooth' });
+              }}
+              className={`px-6 py-3 font-orbitron tracking-wider rounded-full text-md font-medium bg-transparent hover:scale-105 transition duration-200 ${
+                isLightBg
+                  ? "text-black hover:bg-black hover:text-white"
+                  : "hover:bg-white hover:text-black dark:text-white/75"
+              } ${isActive("footer") ? (isLightBg ? "text-black font-semibold" : "text-white font-semibold") : ""}`}
             >
               Contact
             </Link>
@@ -258,13 +311,15 @@ const Navbar: React.FC = () => {
           <div className="flex items-center justify-between pr-4 py-3">
             {/* Left: Animated Signature */}
             <div className="flex-shrink-0">
-              <AnimatedSignature />
+              <AnimatedSignature isLight={isLightBg} />
             </div>
 
             {/* Right: Mobile Menu Button */}
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="text-white hover:text-gray-300 hover:bg-white/10 p-2 rounded-md transition-colors duration-200"
+              className={`p-2 rounded-md transition-colors duration-200 ${
+                isLightBg ? "text-black hover:bg-black/10" : "text-white hover:text-gray-300 hover:bg-white/10"
+              }`}
             >
               <svg
                 className="h-6 w-6"
@@ -304,25 +359,33 @@ const Navbar: React.FC = () => {
                 <Link
                   key={item.href}
                   href={item.href}
-                  className={`hover:text-white hover:bg-white/15 block px-3 py-2 rounded-md text-sm font-orbitron tracking-wider font-medium transition-colors duration-200 ${
-                    isActive(item.href)
-                      ? "text-white font-semibold bg-white/15"
-                      : "text-white/90"
+                  className={`block px-3 py-2 rounded-md text-sm font-orbitron tracking-wider font-medium transition-colors duration-200 ${
+                    isLightBg
+                      ? `hover:text-black hover:bg-black/10 ${isActive(item.id) ? "text-black font-semibold bg-black/10" : "text-black/70"}`
+                      : `hover:text-white hover:bg-white/15 ${isActive(item.id) ? "text-white font-semibold bg-white/15" : "text-white/90"}`
                   }`}
-                  onClick={() => setIsMobileMenuOpen(false)}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    document.getElementById(item.id)?.scrollIntoView({ behavior: 'smooth' });
+                    setIsMobileMenuOpen(false);
+                  }}
                 >
                   {item.label}
                 </Link>
               ))}
               {/* Contact Button in Mobile Menu */}
               <Link
-                href="/contact"
-                className={` text-center block px-6 py-3 mt-3 text-sm font-orbitron tracking-wider rounded-lg font-medium bg-white/75 hover:bg-white dark:text-black transition duration-200 ${
-                  isActive("/contact")
-                    ? "bg-white text-black font-semibold"
-                    : ""
-                }`}
-                onClick={() => setIsMobileMenuOpen(false)}
+                href="#footer"
+                className={`text-center block px-6 py-3 mt-3 text-sm font-orbitron tracking-wider rounded-lg font-medium transition duration-200 ${
+                  isLightBg
+                    ? "bg-black/10 text-black hover:bg-black/20"
+                    : "bg-white/75 hover:bg-white dark:text-black"
+                } ${isActive("footer") ? (isLightBg ? "font-semibold" : "bg-white text-black font-semibold") : ""}`}
+                onClick={(e) => {
+                  e.preventDefault();
+                  document.getElementById('footer')?.scrollIntoView({ behavior: 'smooth' });
+                  setIsMobileMenuOpen(false);
+                }}
               >
                 Contact
               </Link>

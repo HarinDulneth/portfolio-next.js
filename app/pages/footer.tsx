@@ -4,7 +4,7 @@ import React from "react";
 
 export default function FooterPage() {
   return (
-    <div className="w-full bg-white">
+    <div data-theme="light" className="w-full bg-white pt-20">
       {/* Feedback Box */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-20 relative z-10">
         <div className="rounded-[15px] py-20 px-8 md:py-32 md:px-16 flex flex-col md:flex-row items-center justify-between gap-8 bg-gradient-to-r from-[#B8E7FF] to-[#D2CCFF]">
