@@ -32,7 +32,7 @@ async function upsertVector(id, vector, text) {
 }
 
 async function main() {
-    const buffer = fs.readFileSync("./public/resume.pdf");
+    const buffer = fs.readFileSync("./public/cv.pdf");
     const data = await pdf(buffer);
 
     const chunks = data.text.match(/.{1,500}/g);
