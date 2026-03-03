@@ -1,5 +1,5 @@
 const fs = require("fs");
-const pdf = require("pdf-parse");
+const pdfParse = require("pdf-parse");
 const axios = require("axios");
 
 
@@ -33,7 +33,7 @@ async function upsertVector(id, vector, text) {
 
 async function main() {
     const buffer = fs.readFileSync("./public/cv.pdf");
-    const data = await pdf(buffer);
+    const data = await pdfParse(buffer);
 
     const chunks = data.text.match(/.{1,500}/g);
     console.log(`Found ${chunks.length} chunks to index`);
