@@ -1,6 +1,9 @@
 import axios from "axios";
 import { generateEmbedding } from "../lib/embeddings.js";
 import { upsertVector } from "../lib/vector.js";
+import dotenv from "dotenv";
+
+dotenv.config({ path: ".env.local" });
 
 const username = process.env.GITHUB_USERNAME;
 
