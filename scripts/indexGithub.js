@@ -1,6 +1,6 @@
 import axios from "axios";
-import { generateEmbedding } from "../lib/embeddings";
-import { upsertVector } from "../lib/vector";
+import { generateEmbedding } from "../lib/embeddings.js";
+import { upsertVector } from "../lib/vector.js";
 
 const username = process.env.GITHUB_USERNAME;
 
