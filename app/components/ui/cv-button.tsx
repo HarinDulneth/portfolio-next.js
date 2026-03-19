@@ -10,7 +10,7 @@ interface CVButtonProps {
 }
 
 export const CVButton = ({
-  href = "/cv.pdf",
+  href = "/Harin_Dulneth.pdf",
   download = "Harin_Dulneth_CV.pdf",
 }: CVButtonProps) => {
   return (

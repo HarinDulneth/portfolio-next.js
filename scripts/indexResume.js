@@ -24,7 +24,7 @@ async function extractTextFromPDF(path) {
 
 async function run() {
   try {
-    const text = await extractTextFromPDF("./public/cv.pdf");
+    const text = await extractTextFromPDF("./public/Harin_Dulneth.pdf");
 
     const chunks = text.match(/.{1,500}/g) || [];
 
