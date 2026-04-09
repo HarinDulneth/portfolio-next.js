@@ -172,31 +172,32 @@ export default function Awards() {
               <CardContent className="h-full pt-6">
                 <blockquote className="grid h-full grid-rows-[auto_1fr_auto] gap-4">
                   <h3 className="text-lg font-medium text-white/85">
-                    Stage 01 - Xcelerate SpiritX 2025
+                    AITHON 2026 - MVP Phase (Top 30)
                   </h3>
-                  <p className="text-sm text-white/75">
-                    Led Team Telusko in Stage 01 Xcelerate of SpiritX 2025 - an
-                    inter-university development competition filled with
-                    intensity, creativity, and true teamwork.
+                  <p className="text-sm text-white/75 mb-1">
+                    Selected for the MVP Development Phase (Top 30 out of 75+ teams 
+                    and 300+ participants). Led my team in architecting and building 
+                    CuraNex, an AI-driven demand forecasting platform.
+
                   </p>
 
-                  <div className="grid items-center gap-3 [grid-template-columns:auto_1fr]">
+                  <div className="grid grid-cols-[auto_1fr] gap-3">
                     <Avatar className="size-12">
                       <AvatarImage
-                        src="/moraspirit.png"
-                        alt="MoraSpirit 360"
+                        src="/Hemas.png"
+                        alt="Hemas Holdings PLC"
                         height="400"
                         width="400"
                         loading="lazy"
                       />
-                      <AvatarFallback>MS</AvatarFallback>
+                      <AvatarFallback>IE</AvatarFallback>
                     </Avatar>
                     <div>
                       <cite className="text-sm font-medium text-gray-400">
-                        MoraSpirit 360
+                        Hemas Holdings PLC
                       </cite>
                       <a
-                        href="https://www.linkedin.com/posts/harin-dulneth-1b8455352_spiritx2025-xcelerate-teamtelusko-activity-7381208988702650368-XYD_?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFf8x9wBHMeYKNE2KP6ojgr1V-VwQenN5vo"
+                        href="https://www.linkedin.com/posts/harin-dulneth-1b8455352_designathon-ix25-firstdesignathon-activity-7412934376746979328-Ki-X?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFf8x9wBHMeYKNE2KP6ojgr1V-VwQenN5vo"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="text-[#6400DE]/85 block text-sm hover:animate-glitch-color"
@@ -220,31 +221,31 @@ export default function Awards() {
               <CardContent className="h-full pt-6">
                 <blockquote className="grid h-full grid-rows-[auto_1fr_auto] gap-4">
                   <h3 className="text-lg font-medium text-white/85">
-                    IX'25 - Designathon
+                    Stage 01 - Xcelerate SpiritX 2025
                   </h3>
-                  <p className="text-sm text-white/75">
-                    Secured a top 20 placement at IX&apos;25 Designathon - our
-                    first designathon experience, exploring ideas and pushing
-                    creative boundaries as a team.
+                  <p className="text-sm text-white/75 mb-1">
+                    Led Team Telusko in Stage 01 Xcelerate of SpiritX 2025 - an
+                    inter-university development competition filled with
+                    intensity, creativity, and true teamwork.
                   </p>
 
-                  <div className="grid grid-cols-[auto_1fr] gap-3">
+                  <div className="grid items-center gap-3 [grid-template-columns:auto_1fr]">
                     <Avatar className="size-12">
                       <AvatarImage
-                        src="/ieee-iit.png"
-                        alt="IEEE Student Branch of IIT"
+                        src="/moraspirit.png"
+                        alt="MoraSpirit 360"
                         height="400"
                         width="400"
                         loading="lazy"
                       />
-                      <AvatarFallback>IE</AvatarFallback>
+                      <AvatarFallback>MS</AvatarFallback>
                     </Avatar>
                     <div>
                       <cite className="text-sm font-medium text-gray-400">
-                        IEEE Student Branch of IIT
+                        MoraSpirit 360
                       </cite>
                       <a
-                        href="https://www.linkedin.com/posts/harin-dulneth-1b8455352_designathon-ix25-firstdesignathon-activity-7412934376746979328-Ki-X?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFf8x9wBHMeYKNE2KP6ojgr1V-VwQenN5vo"
+                        href="https://www.linkedin.com/posts/harin-dulneth-1b8455352_spiritx2025-xcelerate-teamtelusko-activity-7381208988702650368-XYD_?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFf8x9wBHMeYKNE2KP6ojgr1V-VwQenN5vo"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="text-[#6400DE]/85 block text-sm hover:animate-glitch-color"

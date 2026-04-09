@@ -11,8 +11,8 @@ const sampleDescription1 = [
 ];
 
 const sampleDescription2 = [
-  "This portfolio is a modern, interactive web app built to present my skills, projects, and background in a clean, focused way. It features smooth transitions, responsive layouts, and a visually distinct tech‑stack and projects section that work well on both desktop and mobile.",
-  "The site is engineered with reusable components, a consistent design system, and attention to performance and accessibility. Custom UI elements-like the animated backgrounds, interactive skill grid, and 3D‑style project cards - demonstrate my ability to ship polished, production‑ready front‑end experiences.",
+  "CuraNex is an advanced AI‑driven demand forecasting and inventory optimization platform built to predict future stock requirements and streamline supply chains. It features interactive data visualizations, automated anomaly alerts, and proactive inventory reorder recommendations designed to make complex data instantly digestible.",
+  "The platform is engineered with a robust machine learning pipeline, utilizing an ensemble of deep sequence models and tree‑based gradient boosting architectures. Custom technical implementations—such as memory‑efficient recursive feature engineering and a fully responsive, glassmorphism‑inspired dashboard—demonstrate my ability to ship scalable, end‑to‑end ML solutions.",
 ];
 
 const sampleDescription3 = [
@@ -40,9 +40,9 @@ const projects = [
     featured: true,
   },
   {
-    title: "Portfolio Website With AI Assistant",
+    title: "CuraNex - AI Demand Forecasting & Inventory Optimization Platform",
     description: sampleDescription2,
-    sourceUrl: "https://github.com/HarinDulneth/portfolio-next.js.git",
+    sourceUrl: "https://github.com/CuraNex",
     variant: "light" as const,
     featured: false,
   },
