@@ -120,7 +120,7 @@ export default function About() {
               <div className="rounded-2xl overflow-hidden shadow-2xl aspect-[3/4] relative">
                 <Lens hovering={hovering} setHovering={setHovering}>
                   <Image
-                    src="/me.jpg"
+                    src="/pro_.png"
                     alt="Harin Dulneth"
                     width={380}
                     height={507}
