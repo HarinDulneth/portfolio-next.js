@@ -100,7 +100,7 @@ function SkillBadge({ skill, large = false }: { skill: Skill; large?: boolean })
       alt={skill.name}
       width={large ? 56 : 40}
       height={large ? 56 : 40}
-      className={`object-contain ${large ? "h-14 w-14" : "h-10 w-10"}`}
+      className={`object-contain ${large ? "h-8 w-8 sm:h-10 sm:w-10 md:h-12 md:w-12 lg:h-14 lg:w-14" : "h-6 w-6 sm:h-8 sm:w-8 md:h-10 md:w-10"}`}
       unoptimized
     />
   );
@@ -152,7 +152,7 @@ function SkillCell({
       <div
         className={
           "flex w-full items-center justify-center " +
-          (large ? "h-24 md:h-28 lg:h-32" : "h-16 md:h-20 lg:h-24")
+          (large ? "h-16 sm:h-20 md:h-24 lg:h-28" : "h-12 sm:h-16 md:h-20 lg:h-24")
         }
       >
         <SkillBadge skill={skill} large={large} />

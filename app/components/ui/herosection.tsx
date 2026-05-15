@@ -14,7 +14,7 @@ export default function HeroSection() {
               className="w-full h-full flex items-center justify-center uppercase lg:text-7xl font-zendots md:text-5xl text-3xl"
               animationSpeed={15}
               showBorder={false}
-              duration={3}
+              duration={2}
             />
           </div>
         </div>

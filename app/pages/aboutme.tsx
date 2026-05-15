@@ -53,9 +53,9 @@ export default function About() {
         className="relative w-full max-w-[1200px]"
         style={{ minHeight: "580px" }}
       >
-        {/* Glow stripe — hidden initially, revealed on card hover */}
+        {/* Glow stripe — hidden on mobile, revealed on card hover on desktop */}
         <div
-          className="pointer-events-none absolute flex items-end justify-center"
+          className="pointer-events-none absolute hidden md:flex items-end justify-center"
           style={{
             left: "247px",
             right: "0",
@@ -87,9 +87,9 @@ export default function About() {
             zIndex: 2,
           }}
         >
-          {/* Card background — flat color base */}
+          {/* Card background — flat color base (desktop only) */}
           <div
-            className="absolute rounded-[28px] shadow-2xl"
+            className="absolute rounded-[28px] shadow-2xl hidden md:block"
             style={{
               top: "-45px",
               left: "247px",
@@ -98,9 +98,9 @@ export default function About() {
               background: "#171717",
             }}
           />
-          {/* Radial gradient overlay — fades in on hover */}
+          {/* Radial gradient overlay — fades in on hover (desktop only) */}
           <div
-            className="absolute rounded-[28px]"
+            className="absolute rounded-[28px] hidden md:block"
             style={{
               top: "-45px",
               left: "247px",
@@ -116,7 +116,7 @@ export default function About() {
           {/* Content layer */}
           <div className="relative z-10 flex flex-col md:flex-row">
             {/* Left: Image */}
-            <div className="flex-shrink-0 pt-10" style={{ width: "380px" }}>
+            <div className="flex-shrink-0 pt-10 w-full md:w-[320px] lg:w-[380px]">
               <div className="rounded-2xl overflow-hidden shadow-2xl aspect-[3/4] relative">
                 <Lens hovering={hovering} setHovering={setHovering}>
                   <Image
@@ -125,7 +125,7 @@ export default function About() {
                     width={380}
                     height={507}
                     className="object-cover w-full h-full"
-                    sizes="380px"
+                    sizes="(max-width: 768px) 100vw, 380px"
                     priority
                   />
                 </Lens>
@@ -135,7 +135,7 @@ export default function About() {
             {/* Right: Single intro box — Hello There + line + I'm a ... */}
             <div className="flex flex-col flex-1 mt-5 gap-5">
               <div
-                className="mx-10"
+                className="mx-0 md:mx-10"
                 style={{
                   transform: isVisible ? "translateY(0)" : "translateY(20px)",
                   opacity: isVisible ? 1 : 0,
@@ -144,14 +144,14 @@ export default function About() {
                 }}
               >
                 <div className="gradient-card p-[2px] rounded-2xl">
-                  <div className="group/intro relative overflow-hidden bg-[#0A0A0A] px-8 py-7 sm:px-10 sm:py-8 transition-colors duration-300 rounded-2xl">
+                  <div className="group/intro relative overflow-hidden bg-[#0A0A0A] px-6 py-6 sm:px-8 sm:py-7 md:px-10 md:py-8 transition-colors duration-300 rounded-2xl">
                     <p className="relative z-10 font-inter text-white/85 text-lg sm:text-2xl font-medium">
                       Hello There!
                     </p>
-                    <div className="relative z-10 mt-4 mb-5 -mx-8 w-[calc(100%+4rem)] sm:-mx-10 sm:w-[calc(100%+5rem)]">
+                    <div className="relative z-10 mt-4 mb-5 -mx-6 w-[calc(100%+3rem)] sm:-mx-8 sm:w-[calc(100%+4rem)] md:-mx-10 md:w-[calc(100%+5rem)]">
                       <div className="h-px bg-white/10 transition-colors duration-300" />
                     </div>
-                    <p className="relative z-10 font-inter text-white/75 text-base sm:text-lg leading-relaxed">
+                    <p className="relative z-10 font-inter text-white/75 text-sm sm:text-base md:text-lg leading-relaxed">
                       I'm Harin Dulneth, a Computer Science undergraduate with a
                       strong interest in AI developments and applied Machine
                       Learning and a solid foundation in full-stack development.
@@ -162,8 +162,8 @@ export default function About() {
                 </div>
               </div>
 
-              {/* Skills cards — 3 horizontal */}
-              <div className="grid grid-cols-3 gap-4 mx-8 mt-4">
+              {/* Skills cards — stack on mobile, 3 cols on sm+ */}
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mx-0 md:mx-8 mt-4">
                 <SkillHoverCard
                   title="AI / ML & LLM"
                   description="Familiar with AI/ML workflows using Python, PyTorch/TensorFlow, and LLM ecosystems (Hugging Face and Groq APIs), including model integration."

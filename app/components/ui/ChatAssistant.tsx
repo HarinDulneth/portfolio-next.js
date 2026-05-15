@@ -3,6 +3,7 @@
 import { Bot } from "lucide-react";
 import { useState, useEffect, useRef, JSX } from "react";
 import { v4 as uuid } from "uuid";
+import { usePreloaderDone } from "./page-wrapper";
 
 interface ChatMessage {
   role: "user" | "assistant";
@@ -55,7 +56,8 @@ interface ChatResponse {
   reply: string;
 }
 
-export default function ChatAssistant(): JSX.Element {
+export default function ChatAssistant(): JSX.Element | null {
+  const preloaderDone = usePreloaderDone();
   const [open, setOpen] = useState(false);
   const [chat, setChat] = useState<ChatMessage[]>([]);
   const [message, setMessage] = useState("");
@@ -136,6 +138,8 @@ export default function ChatAssistant(): JSX.Element {
   };
 
   const hasMessage = message.trim();
+
+  if (!preloaderDone) return null;
 
   return (
     <div ref={containerRef}>

@@ -106,7 +106,7 @@ export default function Experience() {
   ];
 
   return (
-    <section data-theme="light" className="min-h-screen py-20 pb-3 px-4 sm:px-6 lg:px-8 md:py-40 md:pb-5 bg-white">
+    <section data-theme="light" className="min-h-screen py-20 pb-24 px-4 sm:px-6 lg:px-8 md:py-40 md:pb-3 bg-white">
       {/* Title */}
       <div ref={headingRef} className="flex justify-center mb-15">
         <TextScramble 

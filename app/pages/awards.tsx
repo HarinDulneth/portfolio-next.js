@@ -113,7 +113,7 @@ export default function Awards() {
               }}
             >
               <CardContent className="h-full pt-6">
-                <div className="grid grid-cols-[1fr_auto] h-full gap-6">
+              <div className="grid grid-cols-1 sm:grid-cols-[1fr_auto] h-full gap-4 sm:gap-6">
                   <blockquote className="grid h-full grid-rows-[auto_1fr_auto] gap-4">
                     <h3 className="text-xl font-medium text-white/85">
                       📄 Nexus - FCTSRS 2025
@@ -152,7 +152,7 @@ export default function Awards() {
                     </div>
                   </blockquote>
                   <img
-                    className="w-44 h-full rounded-xl object-cover object-[60%] transition-transform duration-300 group-hover:scale-105 cursor-pointer"
+                    className="w-full h-48 sm:w-44 sm:h-full rounded-xl object-cover object-[60%] transition-transform duration-300 group-hover:scale-105 cursor-pointer order-first sm:order-last"
                     src="/1761225956269.jpg"
                     alt="FCTSRS 2025 Presentation"
                     onClick={() => openImageModal("/1761225956269.jpg")}

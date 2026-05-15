@@ -23,7 +23,7 @@ export default function FooterPage() {
       </div>
 
       {/* Footer */}
-      <footer className="w-full bg-[#0A0A0A] rounded-t-[50px] pt-16 pb-8 md:pt-24 md:pb-12 px-4 sm:px-6 lg:px-8 relative overflow-hidden flex flex-col items-center">
+      <footer className="w-full bg-[#0A0A0A] rounded-t-[30px] md:rounded-t-[50px] pt-16 pb-8 md:pt-24 md:pb-12 px-4 sm:px-6 lg:px-8 relative overflow-hidden flex flex-col items-center">
         <div className="max-w-7xl mx-auto w-full z-10 flex flex-col lg:flex-row justify-between gap-10 lg:gap-8 mb-24 md:mb-32">
           
           {/* Left Section */}
@@ -48,7 +48,7 @@ export default function FooterPage() {
           </div>
 
           {/* Links Sections */}
-          <div className="flex flex-wrap md:flex-nowrap gap-16 lg:gap-32">
+          <div className="flex flex-wrap md:flex-nowrap gap-8 sm:gap-12 lg:gap-32">
             <div className="space-y-5">
               <h3 className="text-white font-semibold text-lg">Pages</h3>
               <ul className="space-y-3">
@@ -69,15 +69,6 @@ export default function FooterPage() {
                 <li><a href="https://www.instagram.com/___.harin.___/" target="_blank" rel="noopener noreferrer" className="text-white/70 hover:text-white transition-colors text-sm font-medium">Instagram</a></li>
                 <li><a href="https://x.com/" target="_blank" rel="noopener noreferrer" className="text-white/70 hover:text-white transition-colors text-sm font-medium">Twitter</a></li>
                 <li><a href="https://www.linkedin.com/in/harin-dulneth-1b8455352/" target="_blank" rel="noopener noreferrer" className="text-white/70 hover:text-white transition-colors text-sm font-medium">LinkedIn</a></li>
-              </ul>
-            </div>
-
-            <div className="space-y-5">
-              <h3 className="text-white font-semibold text-lg">Legal</h3>
-              <ul className="space-y-3">
-                <li><a href="#" className="text-white/70 hover:text-white transition-colors text-sm font-medium">Privacy Policy</a></li>
-                <li><a href="#" className="text-white/70 hover:text-white transition-colors text-sm font-medium">Terms of Service</a></li>
-                <li><a href="#" className="text-white/70 hover:text-white transition-colors text-sm font-medium">Cookie Policy</a></li>
               </ul>
             </div>
           </div>
