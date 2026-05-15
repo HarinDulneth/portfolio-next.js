@@ -6,33 +6,36 @@ import Home from "./pages/home";
 import Projects from "./pages/projects";
 import Skills from "./pages/skills";
 import ChatAssistant from "./components/ui/ChatAssistant";
+import PageWrapper from "./components/ui/page-wrapper";
 
 export default function App() {
   return (
-    <div>
-      <section id="home">
-        <Home />
-      </section>
-      <section id="aboutme">
-        <About />
-      </section>
-      <section id="skills">
-        <Skills />
-      </section>
-      <section id="projects">
-        <Projects />
-      </section>
-      <section id="awards">
-        <Awards />
-      </section>
-      <section id="experience">
-        <Experience />
-      </section>
-      <section id="footer">
-        <FooterPage />
-      </section>
-      <ChatAssistant />
-    </div>
+    <PageWrapper>
+      <div>
+        <section id="home">
+          <Home />
+        </section>
+        <section id="aboutme">
+          <About />
+        </section>
+        <section id="skills">
+          <Skills />
+        </section>
+        <section id="projects">
+          <Projects />
+        </section>
+        <section id="awards">
+          <Awards />
+        </section>
+        <section id="experience">
+          <Experience />
+        </section>
+        <section id="footer">
+          <FooterPage />
+        </section>
+        <ChatAssistant />
+      </div>
+    </PageWrapper>
   );
 }
 

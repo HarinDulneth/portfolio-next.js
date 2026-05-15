@@ -1,6 +1,7 @@
 "use client";
 import React, { ReactNode, useEffect, useState } from "react";
 import { motion, stagger, useAnimate } from "motion/react";
+import { usePreloaderDone } from "./page-wrapper";
 
 // Utility function (simplified version of cn)
 function cn(...classes: (string | undefined)[]) {
@@ -20,8 +21,11 @@ export const TextGenerateEffect = ({
   duration?: number;
 }) => {
   const [scope, animate] = useAnimate();
+  const preloaderDone = usePreloaderDone();
 
   useEffect(() => {
+    if (!preloaderDone) return;
+
     const animateText = async () => {
       if (scope.current) {
         await animate(
@@ -39,7 +43,7 @@ export const TextGenerateEffect = ({
     };
 
     animateText();
-  }, []);
+  }, [preloaderDone]);
 
   const renderWords = () => {
     const wordsArray = words.split(" ");
@@ -97,6 +101,7 @@ function GradientTextGenerateEffect({
   const [animationId, setAnimationId] =
     React.useState<string>("gradient-fallback");
   const [mounted, setMounted] = React.useState(false);
+  const preloaderDone = usePreloaderDone();
 
   // Generate stable ID only on client side
   useEffect(() => {
@@ -107,8 +112,11 @@ function GradientTextGenerateEffect({
   }, []);
 
   useEffect(() => {
+    // Wait for preloader to finish before animating text
+    if (!preloaderDone || !mounted) return;
+
     const animateText = async () => {
-      if (scope.current && mounted) {
+      if (scope.current) {
         await animate(
           "span",
           {
@@ -126,7 +134,7 @@ function GradientTextGenerateEffect({
     // Small delay to ensure DOM is ready
     const timer = setTimeout(animateText, 100);
     return () => clearTimeout(timer);
-  }, [mounted, animate, duration, filter]);
+  }, [mounted, animate, duration, filter, preloaderDone]);
 
   const renderWords = () => {
     const wordsArray = words.split(" ");

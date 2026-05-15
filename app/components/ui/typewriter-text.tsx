@@ -2,6 +2,7 @@
 
 import React from "react";
 import { useState, useEffect } from "react";
+import { usePreloaderDone } from "./page-wrapper";
 
 interface TypewriterTextProps {
   text: string;
@@ -24,8 +25,12 @@ const TypewriterText: React.FC<TypewriterTextProps> = ({
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isComplete, setIsComplete] = useState(false);
   const [hasStarted, setHasStarted] = useState(false);
+  const preloaderDone = usePreloaderDone();
 
   useEffect(() => {
+    // Don't start until preloader is done
+    if (!preloaderDone) return;
+
     // Start the animation after the delay
     if (!hasStarted) {
       const startTimeout = setTimeout(() => {
@@ -48,7 +53,7 @@ const TypewriterText: React.FC<TypewriterTextProps> = ({
         onComplete?.();
       }, 500);
     }
-  }, [currentIndex, text, speed, delay, isComplete, onComplete, hasStarted]);
+  }, [currentIndex, text, speed, delay, isComplete, onComplete, hasStarted, preloaderDone]);
 
   return (
     <span className={`inline-block ${className}`} style={{ minHeight: '1em' }}>

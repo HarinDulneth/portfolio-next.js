@@ -3,12 +3,15 @@
 import React, { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { usePreloaderDone } from "./page-wrapper";
 
-// Custom hook for load-based animation
-const useLoadAnimation = (duration: number = 5000, delay: number = 500) => {
+// Custom hook for load-based animation — gated on preloader completion
+const useLoadAnimation = (duration: number = 5000, delay: number = 500, enabled: boolean = true) => {
   const [progress, setProgress] = useState(0);
 
   useEffect(() => {
+    if (!enabled) return;
+
     const timer = setTimeout(() => {
       const startTime = Date.now();
 
@@ -29,7 +32,7 @@ const useLoadAnimation = (duration: number = 5000, delay: number = 500) => {
     }, delay);
 
     return () => clearTimeout(timer);
-  }, [duration, delay]);
+  }, [duration, delay, enabled]);
 
   return progress;
 };
@@ -41,7 +44,8 @@ interface AnimatedSignatureProps {
 
 const AnimatedSignature: React.FC<AnimatedSignatureProps> = ({ isLight = false }) => {
   const svgRef = useRef<SVGSVGElement>(null);
-  const animationProgress = useLoadAnimation(5000, 500); // 2s duration, 0.5s delay
+  const preloaderDone = usePreloaderDone();
+  const animationProgress = useLoadAnimation(5000, 500, preloaderDone); // 5s duration, 0.5s delay, gated on preloader
 
   useEffect(() => {
     if (svgRef.current) {
