@@ -152,7 +152,7 @@ export default function About() {
                       <div className="h-px bg-white/10 transition-colors duration-300" />
                     </div>
                     <p className="relative z-10 font-inter text-white/75 text-sm sm:text-base md:text-lg leading-relaxed">
-                      I'm Harin Dulneth, a Computer Science undergraduate with a
+                      I'm Harin Dulneth, a Computer Science undergraduate specializing in Artificial Intelligence with a
                       strong interest in AI developments and applied Machine
                       Learning and a solid foundation in full-stack development.
                       I truly enjoy teamwork - collaborating to solve complex
