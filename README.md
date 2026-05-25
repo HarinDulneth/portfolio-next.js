@@ -2,7 +2,7 @@
 
 Welcome to the repository for my personal portfolio website! This project serves as a digital resume and a showcase of my skills, experiences, and projects. It is designed with a modern, dynamic, and interactive user interface to provide an engaging experience.
 
-![Portfolio Preview](/public/pro_.png)
+![Portfolio Preview](/public/me.png)
 
 ## 🌟 Overview
 
