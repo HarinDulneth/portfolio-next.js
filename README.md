@@ -1,5 +1,7 @@
 # Harin Dulneth - Personal Portfolio 🚀
 
+[![Deployed on Vercel](https://img.shields.io/badge/Deployed%20on-Vercel-black?logo=vercel)](https://harin-dulneth.vercel.app/)
+
 Welcome to the repository for my personal portfolio website! This project serves as a digital resume and a showcase of my skills, experiences, and projects. It is designed with a modern, dynamic, and interactive user interface to provide an engaging experience.
 
 ![Portfolio Preview](/public/me.png)
@@ -91,7 +93,7 @@ Here are a few highlights from the portfolio:
 Feel free to reach out if you'd like to collaborate, have a question, or just want to say hi!
 
 - **GitHub**: [@HarinDulneth](https://github.com/HarinDulneth)
-- **Portfolio**: [Harin Dulneth](https://harindulneth.vercel.app/) *(Update with actual domain if deployed)*
+- **Portfolio**: [Harin Dulneth](https://harin-dulneth.vercel.app/)
 
 ---
 
