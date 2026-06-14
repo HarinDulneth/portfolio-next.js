@@ -29,7 +29,6 @@ This project is built using modern web technologies to ensure high performance, 
   - [Framer Motion](https://www.framer.com/motion/)
   - [GSAP](https://gsap.com/)
   - [tsParticles](https://particles.js.org/)
-  - [React Spline](https://spline.design/)
 - **UI Components**: [Radix UI](https://www.radix-ui.com/), [Lucide React](https://lucide.dev/) (Icons)
 - **Fonts**: Optimized with `next/font` (Goldman, Audiowide, Inter, Zen Dots, Orbitron)
 
